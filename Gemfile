@@ -45,6 +45,7 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'dotenv-rails'
   gem 'shoulda-matchers', require: false
+  gem 'haml'
 end
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
 
