@@ -1,0 +1,16 @@
+%html
+  %head
+    %title ClassicalReviewSite
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body
+    %nav
+      %ul
+        - if user_signed_in?
+          %li= link_to 'Sign Out', '#'
+        - else
+          %li= link_to 'Sign Up', new_user_registration_path
+    %p.notice= notice
+    %p.alert= alert
+    = yield
