@@ -11,6 +11,21 @@ class PiecesController < ApplicationController
     @piece = Piece.find(params[:id])
   end
 
+  def edit
+    @piece = Piece.find(params[:id])
+  end
+
+  def update
+    @piece = Piece.new(piece_params)
+    if @piece.update_attributes(piece_params)
+      flash[:notice] = "Piece edited successfully"
+      redirect_to @piece
+    else
+      flash[:errors] = @piece.errors.full_messages.join(". ")
+      render :edit
+    end
+  end
+
   def create
     @piece = Piece.new(piece_params)
     if @piece.save
@@ -20,6 +35,12 @@ class PiecesController < ApplicationController
       flash[:errors] = @piece.errors.full_messages.join(". ")
       render :new
     end
+  end
+
+  def destroy
+    Piece.find(params[:id]).destroy
+    flash[:success] = "Piece Deleted"
+    redirect_to root_path
   end
 
   private

@@ -1,0 +1,13 @@
+%h1 Edit Piece
+= form_for(@piece) do |f|
+  %div
+    = f.label :title
+    = f.text_field :title, placeholder: "Title"
+
+  %div
+    = f.label :composer
+    = f.text_field :composer, placeholder: "Composer"
+
+  .actions
+    = f.submit "Edit"
+%div= link_to 'Back', pieces_path
