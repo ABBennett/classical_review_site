@@ -1,5 +1,4 @@
 class PiecesController < ApplicationController
-
   def new
     @piece = Piece.new
   end
@@ -9,7 +8,7 @@ class PiecesController < ApplicationController
 
     if @piece.save
       flash[:notice] = "Piece added successfully"
-      redirect_to new_piece_path#(@piece)
+      redirect_to new_piece_path #(@piece)
     else
       flash[:errors] = @piece.errors.full_messages.join(". ")
       render :new
@@ -17,6 +16,7 @@ class PiecesController < ApplicationController
   end
 
   private
+
   def piece_params
     params.require(:piece).permit(:title, :composer)
   end
