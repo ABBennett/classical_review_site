@@ -4,6 +4,9 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 gem 'foundation-rails'
+gem 'simple_form'
+gem 'devise'
+gem 'haml'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
@@ -45,7 +48,7 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'dotenv-rails'
   gem 'shoulda-matchers', require: false
-  gem 'haml'
+  gem 'quiet_assets'
 end
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
 
