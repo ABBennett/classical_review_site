@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   resources :welcome, only: [:index]
 
-  resources :pieces, only: [:new, :create, :index, :show]
+  resources :pieces
   root "pieces#index"
 end
