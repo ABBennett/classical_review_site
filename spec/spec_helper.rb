@@ -43,6 +43,11 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  def title_and_composer
+    fill_in 'Title', with: "Marriage of Figaro"
+    fill_in 'Composer', with: "Mozart"
+  end
+
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin
