@@ -8,7 +8,7 @@ class PiecesController < ApplicationController
 
     if @piece.save
       flash[:notice] = "Piece added successfully"
-      redirect_to new_piece_path #(@piece)
+      redirect_to new_piece_path 
     else
       flash[:errors] = @piece.errors.full_messages.join(". ")
       render :new
