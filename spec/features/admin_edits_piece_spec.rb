@@ -13,7 +13,8 @@ feature "admin edits pieces" do
 
       expect(page).to have_content "Edit Piece"
 
-      title_and_composer
+      fill_in 'Title', with: "Marriage of Figaro"
+      fill_in 'Composer', with: "Mozart"
       click_button "Edit"
 
       expect(page).to have_content "Marriage of Figaro"
