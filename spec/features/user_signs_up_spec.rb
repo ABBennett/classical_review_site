@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'spec_helper'
 
 feature 'user signs up' do
   context "with username and password" do
