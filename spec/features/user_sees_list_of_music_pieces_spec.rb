@@ -3,8 +3,8 @@ require 'rails_helper'
 feature "visitor sees a list of pieces" do
   context "visiting the home page" do
     before do
-      dumpling_king = Piece.create(title: 'Dumpling King', composer: "Tchackowskowitz")
-      rock_bottom = Piece.create(title: "Rock Bottom", composer: "Bach Rotten")
+      Piece.create(title: 'Dumpling King', composer: "Tchackowskowitz")
+      Piece.create(title: "Rock Bottom", composer: "Bach Rotten")
 
       visit root_path
     end
