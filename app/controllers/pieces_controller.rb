@@ -9,13 +9,15 @@ class PiecesController < ApplicationController
 
   def show
     @piece = Piece.find(params[:id])
+    @review = Review.new
+    @reviews = Review.where(piece: @piece)
   end
 
   def create
     @piece = Piece.new(piece_params)
     if @piece.save
       flash[:notice] = "Piece added successfully"
-      redirect_to new_piece_path
+      redirect_to piece_path(@piece)
     else
       flash[:errors] = @piece.errors.full_messages.join(". ")
       render :new

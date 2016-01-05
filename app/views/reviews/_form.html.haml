@@ -1,0 +1,14 @@
+= form_for [@piece, @review] do |f|
+  %div
+    = f.collection_radio_buttons(:rating, [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10]], :first, :last)
+
+  %div
+    = f.label :title
+    = f.text_field :title, placeholder: "Title"
+
+  %div
+    = f.label :body
+    = f.text_area :body, placeholder: "Review"
+
+  .actions
+    = f.submit "Add Review"
