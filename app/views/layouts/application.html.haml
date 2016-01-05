@@ -1,17 +1,21 @@
-%html
+!!! 5
+%html{ :lang => "en"}
   %head
-    %title ClassicalReviewSite
-    = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'application'
-    = csrf_meta_tags
-  %body
-    - flash.each do |type, message|
-      .flash= message
-    %nav
-      %ul
-        - if user_signed_in?
-          %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
-        - else
-          %li= link_to 'Sign In', new_user_session_path
-          %li= link_to 'Sign Up', new_user_registration_path
+    %meta{ :charset => "utf-8" }
+
+    %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
+
+    %title= content_for?(:title) ? yield(:title) : "Untitled"
+
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "vendor/modernizr"
+    = javascript_include_tag "application", 'data-turbolinks-track' => true
+    = csrf_meta_tag
+
+    %body
+      %div= render 'layouts/topbar'
+      - flash.each do |type, message|
+        .flash= message
+      %nav
+
     = yield
