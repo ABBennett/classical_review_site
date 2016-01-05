@@ -6,7 +6,7 @@ feature "users can add a new piece of music" do
 
     visit new_piece_path
     expect(page).to have_content "Add New Music"
-    dummy_data
+    title_and_composer
     click_button "Add Piece"
 
     expect(page).to have_content "Piece added successfully"
@@ -21,9 +21,9 @@ feature "users can add a new piece of music" do
 
   scenario "user provides piece and composer pair already added" do
     visit new_piece_path
-    dummy_data
+    title_and_composer
     click_button "Add Piece"
-    dummy_data
+    title_and_composer
     click_button "Add Piece"
 
     expect(page).to have_content
