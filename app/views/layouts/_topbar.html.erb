@@ -1,0 +1,24 @@
+%nav.top-bar{"data-topbar" => "", :role => "navigation"}
+  %ul.title-area
+    %li.name
+      %h1= link_to "Shostacodech", root_path
+    / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+    %li.toggle-topbar.menu-icon
+      %a{:href => "#"}
+        %span Menu
+  %section.top-bar-section
+    / Right Nav Section
+    %ul.right
+      %li.active
+        %a{:href => "#"} Right Button Active
+      %li.has-dropdown
+        %a{:href => "#"} My Account
+        %ul.dropdown
+          %li
+            %a{:href => "#"} First link in dropdown
+          %li.active
+            %a{:href => "#"} Active link in dropdown
+    / Left Nav Section
+    %ul.left
+      %li
+        %a{:href => "#"} Left Nav Button
