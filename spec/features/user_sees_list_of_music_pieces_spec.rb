@@ -7,11 +7,11 @@ feature "visitor sees a list of pieces" do
     end
 
     let!(:piece1) do
-      Piece.create(title: 'Dumpling King', composer: "Tchackowskowitz", user: user)
+      FactoryGirl.create(:piece, :piece2, user: user)
     end
 
     let!(:piece2) do
-      Piece.create(title: "Rock Bottom", composer: "Bach Rotten", user: user)
+      FactoryGirl.create(:piece, :piece3, user: user)
     end
 
     before do

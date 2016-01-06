@@ -8,6 +8,17 @@ FactoryGirl.define do
   factory :piece do
     title 'Marriage of Figaro'
     composer 'Mozart'
+
+    trait :piece2 do
+      title "Dumpling King"
+      composer "Tchackowskowitz"
+    end
+
+    trait :piece3 do
+      title "Rock Bottom"
+      composer "Bach Rotten"
+    end
+
   end
 
   factory :review do
