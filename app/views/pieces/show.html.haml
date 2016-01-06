@@ -9,6 +9,7 @@
 - if !@reviews.nil?
   %ul
     - @reviews.each do |review|
-      %li= review.title
-      %li= review.body
-      -# %li= "written by: #{review.user.username}"
+      -if !review.title.empty?
+        %li= review.title
+        %li= review.body
+        %li= "written by: #{review.user.username}"

@@ -1,9 +1,9 @@
 class Review < ActiveRecord::Base
   belongs_to :piece
-  # belongs_to :user
+  belongs_to :user
 
-  # validates :user_id
-  validates :rating, presence: { message: "Please choose a rating"}
+  validates :user_id, presence: { message: "Please sign in to add a review"}
+  validates :rating, presence: { message: "Please choose a rating" }
   validates :title, length: {
     minimum: 1,
     maximum: 100,

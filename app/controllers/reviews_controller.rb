@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
   def create
     @piece = Piece.find(params[:piece_id])
     @review = @piece.reviews.new(review_params)
+    @review.user = current_user
     if @review.save
       flash[:notice] = 'Your review has been successfully added.'
       redirect_to piece_path(@piece)
@@ -23,7 +24,7 @@ class ReviewsController < ApplicationController
   end
 
   private
-  
+
   def review_params
     params.require(:review).permit(:title, :rating, :body)
   end
