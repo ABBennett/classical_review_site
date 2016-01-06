@@ -1,5 +1,14 @@
 %h1= @piece.title
 %h2= @piece.composer
 
-%p= link_to "Edit Piece", edit_piece_path
+%p= link_to "Edit Piece", edit_piece_path(@piece)
 %p= link_to "Delete Piece", @piece, method: :delete
+
+%div= render 'reviews/form'
+
+-if !@reviews.nil?
+  %ul
+    - @reviews.each do |review|
+      %li= review.title
+      %li= review.body
+      -# %li= "written by: #{review.user.username}"
