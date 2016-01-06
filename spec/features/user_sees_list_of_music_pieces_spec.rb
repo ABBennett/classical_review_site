@@ -2,10 +2,20 @@ require 'rails_helper'
 
 feature "visitor sees a list of pieces" do
   context "visiting the home page" do
-    before do
-      Piece.create(title: 'Dumpling King', composer: "Tchackowskowitz")
-      Piece.create(title: "Rock Bottom", composer: "Bach Rotten")
+    let(:user) do
+      FactoryGirl.create(:user)
+    end
 
+    let!(:piece1) do
+      Piece.create(title: 'Dumpling King', composer: "Tchackowskowitz", user: user)
+    end
+
+    let!(:piece2) do
+      Piece.create(title: "Rock Bottom", composer: "Bach Rotten", user: user)
+    end
+
+    before do
+      sign_in_as(user)
       visit root_path
     end
 

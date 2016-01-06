@@ -18,7 +18,10 @@ class PiecesController < ApplicationController
   end
 
   def update
+    @piece_orig = Piece.find(params[:id])
     @piece = Piece.new(piece_params)
+    @piece.user = @piece_orig.user
+
     if @piece.update_attributes(piece_params)
       flash[:notice] = "Piece edited successfully"
       redirect_to @piece
@@ -30,6 +33,7 @@ class PiecesController < ApplicationController
 
   def create
     @piece = Piece.new(piece_params)
+    @piece.user = current_user
     if @piece.save
       flash[:notice] = "Piece added successfully"
       redirect_to piece_path(@piece)

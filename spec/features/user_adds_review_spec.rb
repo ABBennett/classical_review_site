@@ -1,8 +1,12 @@
 require "rails_helper"
 
 feature "users can add a new review for a piece of music" do
+  let(:user) do
+    FactoryGirl.create(:user)
+  end
+
   let(:piece) do
-    FactoryGirl.create(:piece)
+    FactoryGirl.create(:piece, user: user)
   end
 
   context "not logged in user" do
@@ -15,10 +19,6 @@ feature "users can add a new review for a piece of music" do
   end
 
   context "logged in user" do
-    let(:user) do
-      FactoryGirl.create(:user)
-    end
-
     before do
       sign_in_as(user)
     end

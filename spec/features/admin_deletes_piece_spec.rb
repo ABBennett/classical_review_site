@@ -2,8 +2,16 @@ require 'rails_helper'
 
 feature "admin deletes pieces" do
   context "visiting piece show page" do
+    let(:user) do
+      FactoryGirl.create(:user)
+    end
+
     let(:dumpling_king) do
-      Piece.create(title: 'Dumpling King', composer: "Tchackowskowitz")
+      Piece.create(title: 'Dumpling King', composer: "Tchackowskowitz", user: user)
+    end
+
+    before do
+      sign_in_as(user)
     end
 
     scenario "admin deletes piece" do
