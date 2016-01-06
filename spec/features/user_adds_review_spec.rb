@@ -20,11 +20,7 @@ feature "users can add a new review for a piece of music" do
     end
 
     before do
-      visit root_path
-      click_link 'Sign In'
-      fill_in 'Email', with: user.email
-      fill_in 'Password', with: user.password
-      click_button 'Sign In'
+      sign_in_as(user)
     end
 
     scenario "user adds new review of music successfully" do
