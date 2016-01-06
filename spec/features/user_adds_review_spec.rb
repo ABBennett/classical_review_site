@@ -48,6 +48,4 @@ feature "users can add a new review for a piece of music" do
 
     expect(page).to have_content "Reviews need to be under 5000 characters"
   end
-
-
 end

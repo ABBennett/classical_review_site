@@ -4,10 +4,16 @@ class Review < ActiveRecord::Base
 
   # validates :user_id
   validates :rating, presence: { message: "Please choose a rating"}
-  validates :title, length: { minimum: 1, maximum: 100,
-    too_long: "Titles need to be under 100 characters" }, allow_blank: true
-  validates :body, length: { minimum: 50, maximum: 5000, too_short: "Reviews need to be at least 50 characters",
-    too_long: "Reviews need to be under 5000 characters"}, allow_blank: true
+  validates :title, length: {
+    minimum: 1,
+    maximum: 100,
+    too_long: "Titles need to be under 100 characters" },
+    allow_blank: true
+  validates :body, length: {
+    minimum: 50,
+    maximum: 5000,
+    too_short: "Reviews need to be at least 50 characters",
+    too_long: "Reviews need to be under 5000 characters" },
+    allow_blank: true
   validates :rank, presence: true, numericality: { only_integer: true }
-
 end
