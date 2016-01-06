@@ -8,6 +8,7 @@ feature "pagination" do
     scenario "user sees correct number of pieces on page" do
       visit root_path
       expect(page).to have_content "Opus10"
+
       expect(page).to_not have_content "Opus11"
     end
     scenario "user visits page by page number" do
@@ -24,6 +25,7 @@ feature "pagination" do
       click_link "Next"
 
       expect(page).to have_content pieces[11].title
+      save_and_open_page
 
       click_link "Prev"
 
