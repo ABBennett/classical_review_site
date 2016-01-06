@@ -2,15 +2,16 @@ require 'rails_helper'
 
 feature "admin edits pieces" do
   context "visiting piece show page" do
-    before do
-      dumpling_king = Piece.create(title: 'Dumpling King', composer: "Tchackowskowitz")
+    let(:dumpling_king) do
+      Piece.create(title: 'Dumpling King', composer: "Tchackowskowitz")
+    end
 
+    before do
       visit piece_path(dumpling_king)
       click_link "Edit Piece"
     end
 
     scenario "admin sees edit form for piece" do
-
       expect(page).to have_content "Edit Piece"
 
       fill_in 'Title', with: "Marriage of Figaro"

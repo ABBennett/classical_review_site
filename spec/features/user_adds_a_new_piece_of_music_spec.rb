@@ -1,16 +1,13 @@
 require "rails_helper"
-require "spec_helper"
 
 feature "users can add a new piece of music" do
   scenario "user adds new piece of music successfully" do
-
     visit new_piece_path
     expect(page).to have_content "Add New Music"
     title_and_composer
     click_button "Add Piece"
 
     expect(page).to have_content "Piece added successfully"
-
   end
 
   scenario "user does not provide proper information" do
@@ -23,6 +20,8 @@ feature "users can add a new piece of music" do
     visit new_piece_path
     title_and_composer
     click_button "Add Piece"
+
+    visit new_piece_path
     title_and_composer
     click_button "Add Piece"
 
