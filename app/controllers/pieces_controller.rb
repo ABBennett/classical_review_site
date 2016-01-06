@@ -4,7 +4,7 @@ class PiecesController < ApplicationController
   end
 
   def index
-    @pieces = Piece.all
+    @pieces = Piece.page(params[:page]).per(10)
   end
 
   def show
