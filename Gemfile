@@ -44,6 +44,7 @@ end
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'database_cleaner'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'capybara'
