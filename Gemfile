@@ -7,6 +7,7 @@ gem 'foundation-rails'
 gem 'simple_form'
 gem 'devise'
 gem 'haml'
+gem 'rails_12factor'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
@@ -60,3 +61,4 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+ruby "2.0.0"
