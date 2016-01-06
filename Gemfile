@@ -7,7 +7,6 @@ gem 'foundation-rails'
 gem 'simple_form'
 gem 'devise'
 gem 'haml'
-gem 'rails_12factor'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
@@ -31,6 +30,9 @@ group :test do
   gem 'coveralls', require: false
 end
 
+group :production do
+  gem 'rails_12factor'
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
