@@ -1,5 +1,6 @@
-%h1= @piece.title
-%h2= @piece.composer
+.show-container
+  %h1.piece-title= @piece.title
+  %h2.piece-composer= @piece.composer
 
 %p= link_to "Edit Piece", edit_piece_path
 %p= link_to "Delete Piece", @piece, method: :delete
