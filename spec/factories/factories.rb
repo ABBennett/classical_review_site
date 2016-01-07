@@ -6,8 +6,8 @@ FactoryGirl.define do
   end
 
   factory :piece do
-    sequence(:title) { |i| "Opus#{i-6}" }
-    sequence(:composer) { |i| "Beethoven#{i-6}" }
+    sequence(:title) { |i| "Opus#{i}" }
+    sequence(:composer) { |i| "Beethoven#{i}" }
   end
 
   factory :review do
