@@ -11,8 +11,8 @@ FactoryGirl.define do
   end
 
   factory :review do
-    sequence(:title){|i| "It's Amazing#{i}"}
-    sequence (:body) { |i| "#{i}" + "a" * 50}
+    sequence(:title) { |i| "It's Amazing#{i}" }
+    sequence (:body) { |i| "#{i}" + "a" * 50 }
     rating "10"
   end
 end

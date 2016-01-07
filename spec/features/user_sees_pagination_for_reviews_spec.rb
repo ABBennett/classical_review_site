@@ -1,15 +1,20 @@
 require 'rails_helper'
 
-
 feature "pagination" do
   context "visiting index page with many reviews" do
     let(:user) do
       FactoryGirl.create(:user)
     end
 
-    let(:piece) { Piece.create(title: 'Dumpling King', composer: "Tchackowskowitz") }
+    let(:piece) {
+      FactoryGirl.create(:piece) }
 
-    let!(:reviews) { FactoryGirl.create_list(:review, 100, user: user, piece: piece) }
+    let!(:reviews) {
+      FactoryGirl.create_list(
+      :review, 100, 
+      user: user,
+      piece: piece)
+    }
 
     before do
       sign_in_as(user)
