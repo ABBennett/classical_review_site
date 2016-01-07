@@ -4,7 +4,7 @@ class PiecesController < ApplicationController
   end
 
   def index
-    @pieces = Piece.page(params[:page]).per(10)
+    @pieces = Piece.order(:created_at).page(params[:page]).per(10)
   end
 
   def show
