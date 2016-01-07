@@ -6,19 +6,8 @@ FactoryGirl.define do
   end
 
   factory :piece do
-    title 'Marriage of Figaro'
-    composer 'Mozart'
-
-    trait :piece2 do
-      title "Dumpling King"
-      composer "Tchackowskowitz"
-    end
-
-    trait :piece3 do
-      title "Rock Bottom"
-      composer "Bach Rotten"
-    end
-
+    sequence(:title) { |i| "Opus#{i}" }
+    sequence(:composer) { |i| "Beethoven#{i}" }
   end
 
   factory :review do

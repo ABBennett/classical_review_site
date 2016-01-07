@@ -6,13 +6,7 @@ feature "visitor sees a list of pieces" do
       FactoryGirl.create(:user)
     end
 
-    let!(:piece1) do
-      FactoryGirl.create(:piece, :piece2, user: user)
-    end
-
-    let!(:piece2) do
-      FactoryGirl.create(:piece, :piece3, user: user)
-    end
+    let!(:pieces) { FactoryGirl.create_list(:piece, 2, user: user) }
 
     before do
       sign_in_as(user)
@@ -20,8 +14,8 @@ feature "visitor sees a list of pieces" do
     end
 
     scenario "sees a list of pieces and link for new Piece" do
-      expect(page).to have_content "Rock Bottom"
-      expect(page).to have_link "Dumpling King"
+      expect(page).to have_content pieces[0].title
+      expect(page).to have_link pieces[1].title
 
       click_link "Add New Piece"
 
@@ -29,10 +23,10 @@ feature "visitor sees a list of pieces" do
     end
 
     scenario "clicks link and is taken to show page for given Piece" do
-      click_link "Dumpling King"
+      click_link pieces[0].title
 
-      expect(page).to have_content "Dumpling King"
-      expect(page).to have_content "Tchackowskowitz"
+      expect(page).to have_content pieces[0].title
+      expect(page).to have_content pieces[0].composer
     end
   end
 end
