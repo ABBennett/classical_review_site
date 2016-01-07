@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 feature 'user signs in' do
+  let(:user) do
+    FactoryGirl.create(:user)
+  end
 
   before do
     visit root_path
@@ -8,7 +11,6 @@ feature 'user signs in' do
   end
 
   scenario 'an existing user speciifies a valid email and password' do
-    user = FactoryGirl.create(:user)
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Sign In'
@@ -29,7 +31,6 @@ feature 'user signs in' do
   end
 
   scenario 'an existing email with the wrong password is denied access' do
-    user = FactoryGirl.create(:user)
     fill_in 'Email', with: user.email
     fill_in 'Password', with: 'incorrect'
     click_button 'Sign In'
@@ -40,7 +41,6 @@ feature 'user signs in' do
   end
 
   scenario 'an already authenticated user cannot re-sign in' do
-    user = FactoryGirl.create(:user)
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Sign In'

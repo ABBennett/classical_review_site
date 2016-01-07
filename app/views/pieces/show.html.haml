@@ -3,5 +3,17 @@
   %h5.show-composer= @piece.composer
 
 %div.links
-  %p= link_to "Edit", edit_piece_path
+  %p= link_to "Edit", edit_piece_path(@piece)
   %p= link_to "Delete", @piece, method: :delete
+
+%div= render 'reviews/form'
+
+- if !@reviews.nil?
+  %ul
+    - @reviews.each do |review|
+      -if !review.title.empty?
+        %li= review.title
+        %li= review.body
+        %li= "written by: #{review.user.username}"
+
+  = paginate @reviews

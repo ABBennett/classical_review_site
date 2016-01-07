@@ -4,11 +4,13 @@ class PiecesController < ApplicationController
   end
 
   def index
-    @pieces = Piece.all
+    @pieces = Piece.page(params[:page]).per(10)
   end
 
   def show
     @piece = Piece.find(params[:id])
+    @review = Review.new
+    @reviews = @piece.reviews.page(params[:page]).per(10)
   end
 
   def edit
@@ -30,7 +32,7 @@ class PiecesController < ApplicationController
     @piece = Piece.new(piece_params)
     if @piece.save
       flash[:notice] = "Piece added successfully"
-      redirect_to new_piece_path
+      redirect_to piece_path(@piece)
     else
       flash[:errors] = @piece.errors.full_messages.join(". ")
       render :new
