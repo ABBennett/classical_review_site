@@ -4,6 +4,7 @@
       %p.piece-title= link_to piece.title, piece_path(piece)
       %p.piece-composer= piece.composer
 
-%p= link_to "Add New Piece", new_piece_path
+-if user_signed_in?
+  %p= link_to "Add New Piece", new_piece_path
 
 = paginate @pieces

@@ -4,7 +4,7 @@ feature "pagination" do
   context "visiting index page with many reviews" do
     let(:user) { FactoryGirl.create(:user) }
 
-    let(:piece) { FactoryGirl.create(:piece) }
+    let(:piece) { FactoryGirl.create(:piece, user: user) }
 
     let!(:reviews) do
       FactoryGirl.create_list(
