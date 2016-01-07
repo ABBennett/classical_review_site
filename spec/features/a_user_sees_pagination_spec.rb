@@ -3,10 +3,7 @@ require 'rails_helper'
 
 feature "pagination" do
   context "visiting index page with many pieces" do
-    let(:user) do
-      FactoryGirl.create(:user)
-    end
-
+    let(:user) { FactoryGirl.create(:user) }
     let!(:pieces) { FactoryGirl.create_list(:piece, 100, user: user) }
 
     scenario "user sees correct number of pieces on page" do

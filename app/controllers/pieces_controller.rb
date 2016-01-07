@@ -18,9 +18,7 @@ class PiecesController < ApplicationController
   end
 
   def update
-    @piece_orig = Piece.find(params[:id])
-    @piece = Piece.new(piece_params)
-    @piece.user = @piece_orig.user
+    @piece = Piece.find(params[:id])
 
     if @piece.update_attributes(piece_params)
       flash[:notice] = "Piece edited successfully"

@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 feature 'user signs in' do
-  let(:user) do
-    FactoryGirl.create(:user)
-  end
+  let(:user) { FactoryGirl.create(:user) }
 
   before do
     visit root_path
