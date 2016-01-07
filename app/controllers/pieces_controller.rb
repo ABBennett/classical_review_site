@@ -4,7 +4,7 @@ class PiecesController < ApplicationController
   end
 
   def index
-    @pieces = Piece.page(params[:page]).per(10)
+    @pieces = Piece.order(:created_at).page(params[:page]).per(10)
   end
 
   def show
@@ -18,7 +18,8 @@ class PiecesController < ApplicationController
   end
 
   def update
-    @piece = Piece.new(piece_params)
+    @piece = Piece.find(params[:id])
+
     if @piece.update_attributes(piece_params)
       flash[:notice] = "Piece edited successfully"
       redirect_to @piece
@@ -30,6 +31,7 @@ class PiecesController < ApplicationController
 
   def create
     @piece = Piece.new(piece_params)
+    @piece.user = current_user
     if @piece.save
       flash[:notice] = "Piece added successfully"
       redirect_to piece_path(@piece)

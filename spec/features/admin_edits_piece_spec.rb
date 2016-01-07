@@ -2,12 +2,12 @@ require 'rails_helper'
 
 feature "admin edits pieces" do
   context "visiting piece show page" do
-    let(:dumpling_king) do
-      Piece.create(title: 'Dumpling King', composer: "Tchackowskowitz")
-    end
+    let(:user) { FactoryGirl.create(:user) }
+    let!(:piece) { FactoryGirl.create(:piece, user: user) }
 
     before do
-      visit piece_path(dumpling_king)
+      sign_in_as(user)
+      visit piece_path(piece)
       click_link "Edit Piece"
     end
 
