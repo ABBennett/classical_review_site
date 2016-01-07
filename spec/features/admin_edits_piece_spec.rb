@@ -8,11 +8,12 @@ feature "admin edits pieces" do
     before do
       sign_in_as(user)
       visit piece_path(piece)
-      click_link "Edit Piece"
+      click_link "Edit"
     end
 
     scenario "admin sees edit form for piece" do
-      expect(page).to have_content "Edit Piece"
+
+      expect(page).to have_content "Edit"
 
       fill_in 'Title', with: "Marriage of Figaro"
       fill_in 'Composer', with: "Mozart"

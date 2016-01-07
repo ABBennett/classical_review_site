@@ -8,10 +8,9 @@ feature "admin deletes pieces" do
     scenario "admin deletes piece" do
       sign_in_as(user)
       visit piece_path(piece)
+      expect(page).to have_content "Delete"
 
-      expect(page).to have_content "Delete Piece"
-
-      click_link "Delete Piece"
+      click_link "Delete"
 
       expect(page).to_not have_content piece.title
       expect(page).to_not have_content piece.composer

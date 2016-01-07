@@ -1,8 +1,10 @@
-%h1= @piece.title
-%h2= @piece.composer
+.show-container
+  %h1.show-title= @piece.title
+  %h5.show-composer= @piece.composer
 
-%p= link_to "Edit Piece", edit_piece_path(@piece)
-%p= link_to "Delete Piece", @piece, method: :delete
+%div.links
+  %p= link_to "Edit", edit_piece_path(@piece)
+  %p= link_to "Delete", @piece, method: :delete
 
 %div= render 'reviews/form'
 

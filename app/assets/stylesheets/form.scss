@@ -1,0 +1,51 @@
+@mixin left-margin-padding {
+  margin-left: 10px;
+  padding: 5px;
+}
+
+@mixin form-inputs {
+  width: 250px;
+  border-radius: 5px;
+}
+
+.form-inputs {
+  @include left-margin-padding;
+  border-radius: 10px;
+}
+
+.form-actions {
+  @include left-margin-padding;
+}
+
+.shared_links a {
+  @include left-margin-padding;
+  display: inline;
+}
+
+form input[type=email] {
+  @include form-inputs
+}
+
+ form input[type=text] {
+  @include form-inputs
+}
+
+form input[type=password] {
+  @include form-inputs
+}
+
+form .button {
+  margin-bottom: 0;
+  border-radius: 10px;
+}
+
+form input[type=submit] {
+    padding:5px 15px;
+    cursor:pointer;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+span.hint {
+  font-size: 12px
+}

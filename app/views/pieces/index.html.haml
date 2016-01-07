@@ -1,7 +1,8 @@
 %ul
   - @pieces.each do |piece|
-    %li= link_to piece.title, piece_path(piece)
-    %li= piece.composer
+    .piece
+      %p.piece-title= link_to piece.title, piece_path(piece)
+      %p.piece-composer= piece.composer
 
 -if user_signed_in?
   %p= link_to "Add New Piece", new_piece_path
