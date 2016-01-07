@@ -8,10 +8,11 @@ feature "pagination" do
 
     let!(:reviews) do
       FactoryGirl.create_list(
-      :review,
-      100,
-      user: user,
-      piece: piece)
+        :review,
+        100,
+        user: user,
+        piece: piece
+      )
     end
 
     before do
