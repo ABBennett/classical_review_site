@@ -4,13 +4,13 @@ feature "visitor sees a list of pieces" do
   context "visiting the home page" do
     before do
       Piece.create(title: 'Dumpling King', composer: "Tchackowskowitz")
-      Piece.create(title: "Rock Bottom", composer: "Bach Rotten")
+      Piece.create(title: "A Rock Bottom", composer: "Bach Rotten")
 
       visit root_path
     end
 
     scenario "sees a list of pieces and link for new Piece" do
-      expect(page).to have_content "Rock Bottom"
+      expect(page).to have_content "A Rock Bottom"
       expect(page).to have_link "Dumpling King"
 
       click_link "Add New Piece"
