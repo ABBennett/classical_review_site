@@ -6,7 +6,7 @@
 .piece {
   padding-left: 10px;
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 0px;
   margin-left: 10px;
 }
 
@@ -15,17 +15,21 @@
   padding: 0px;
 }
 
-.show-container {
-  padding-top: 50px;
-}
-
 .piece-title {
+  font-size: 24px;
   padding: 0px;
   margin: 0px;
+  line-height: 1.0;
 }
+
 
 .piece-composer {
-  font-size: 19px;
+  font-size: 16px;
   padding: 0px;
   margin: 0px;
+  line-height: 1.0;
+}
+
+a {
+  padding: 0px;
 }

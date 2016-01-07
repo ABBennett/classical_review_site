@@ -9,9 +9,9 @@ feature "admin deletes pieces" do
     end
 
     scenario "admin deletes piece" do
-      expect(page).to have_content "Delete Piece"
+      expect(page).to have_content "Delete"
 
-      click_link "Delete Piece"
+      click_link "Delete"
 
       expect(page).to_not have_content "Dumpling King"
       expect(page).to_not have_content "Tchackowskowitz"
