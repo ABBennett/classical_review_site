@@ -10,7 +10,7 @@ class PiecesController < ApplicationController
   def show
     @piece = Piece.find(params[:id])
     @review = Review.new
-    @reviews = @piece.reviews
+    @reviews = @piece.reviews.page(params[:page]).per(10)
   end
 
   def edit
