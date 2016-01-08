@@ -3,7 +3,6 @@ class PiecesController < ApplicationController
 
   def new
     @piece = Piece.new
-    signed_in_flash
   end
 
   def index
@@ -33,7 +32,6 @@ class PiecesController < ApplicationController
   end
 
     def create
-      @piece = Piece.new
       @piece = Piece.new(piece_params)
       @piece.user = current_user
       if @piece.save
