@@ -5,7 +5,5 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-
   root "pieces#index"
-  get 'pieces_show' => 'pieces#show' 
 end

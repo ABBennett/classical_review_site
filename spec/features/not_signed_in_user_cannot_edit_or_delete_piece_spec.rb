@@ -10,11 +10,8 @@ feature "non-signed-in user fails to edit or delete pieces" do
     end
 
     scenario "non-signed-in cannot see edit or links" do
-
       expect(page).to_not have_content "Edit"
       expect(page).to_not have_content "Delete"
-
-
     end
 
     scenario "non-signed-in is presented with error when visiting edit path" do
