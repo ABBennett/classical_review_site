@@ -12,8 +12,26 @@
   %ul
     - @reviews.each do |review|
       -if !review.title.empty?
-        %li= review.title
-        %li= review.body
-        %li= "written by: #{review.user.username}"
+
+        %div.review-container
+          %div.voting-title-container
+            %div.voting
+              -# = link_to "+", votes_path(vote: {review_id: review.id, up: true}), method: :post
+              -# = link_to "-", votes_path(vote: {review_id: review.id, up: false}), method: :post
+              - if current_user.votes.where(review: review).first.nil?
+                = link_to "+", votes_path(vote: {review_id: review.id, up: true}), method: :post
+                = link_to "-", votes_path(vote: {review_id: review.id, up: false}), method: :post
+              - elsif current_user.votes.where(review: review).first.up == true
+                %span= link_to "+", votes_path(vote: {review_id: review.id, up: true}), method: :post
+                = link_to "-", votes_path(vote: {review_id: review.id, up: false}), method: :post
+              - elsif
+                = link_to "+", votes_path(vote: {review_id: review.id, up: true}), method: :post
+                %span= link_to "-", votes_path(vote: {review_id: review.id, up: false}), method: :post
+
+            %h5.review-title= review.title
+
+          %p= review.body
+          %p= "written by: #{review.user.username}"
+
 
   = paginate @reviews

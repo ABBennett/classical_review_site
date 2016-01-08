@@ -1,0 +1,9 @@
+%div.review-container
+  %div.voting-title-container
+    %div.voting
+      = link_to "+", votes_path(:vote => {:review_id => review.id, :up => true}), :method => :post
+      = link_to "-", votes_path(:vote => {:review_id => review.id, :up => false}), :method => :post
+    %h5.review-title= review.title
+
+  %p= review.body
+  %p= "written by: #{review.user.username}"

@@ -1,6 +1,7 @@
 class Review < ActiveRecord::Base
   belongs_to :piece
   belongs_to :user
+  has_many :votes
 
   validates :user_id, presence: { message: "Please sign in to add a review"}
   validates :rating, presence: { message: "Please choose a rating" }

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :pieces do
     resources :reviews
   end
+  resources :votes, only: [:create]
 
 
   root "pieces#index"
