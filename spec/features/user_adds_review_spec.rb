@@ -9,7 +9,7 @@ feature "users can add a new review for a piece of music" do
       visit piece_path(piece)
       click_button 'Add Review'
 
-      expect(page).to have_content "Please sign in to add a review"
+      expect(page).to have_content "Please sign in to review a piece of music"
     end
   end
 

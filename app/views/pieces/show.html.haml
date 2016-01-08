@@ -2,9 +2,11 @@
   %h1.show-title= @piece.title
   %h5.show-composer= @piece.composer
 
-%div.links
-  %p= link_to "Edit", edit_piece_path(@piece)
-  %p= link_to "Delete", @piece, method: :delete
+- if user_signed_in?
+  - if current_user == @piece.user || current_user.role == "admin"
+    %div.links
+    %p= link_to "Edit Piece", edit_piece_path(@piece)
+    %p= link_to "Delete Piece", @piece, method: :delete
 
 %div= render 'reviews/form'
 

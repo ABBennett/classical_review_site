@@ -7,4 +7,5 @@ Rails.application.routes.draw do
 
 
   root "pieces#index"
+  get 'pieces_show' => 'pieces#show' 
 end

@@ -1,6 +1,11 @@
 class PiecesController < ApplicationController
+  before_action :authorize_non_member, only: [:update, :edit, :destroy]
+
   def new
     @piece = Piece.new
+    if !user_signed_in?
+      flash.now[:notice] = "Please sign in to add a piece of music"
+    end
   end
 
   def index
@@ -30,14 +35,20 @@ class PiecesController < ApplicationController
   end
 
   def create
-    @piece = Piece.new(piece_params)
-    @piece.user = current_user
-    if @piece.save
-      flash[:notice] = "Piece added successfully"
-      redirect_to piece_path(@piece)
-    else
-      flash[:errors] = @piece.errors.full_messages.join(". ")
+    if !user_signed_in?
+      flash.now[:notice] = "Please sign in to add a piece of music"
+      @piece = Piece.new
       render :new
+    else
+      @piece = Piece.new(piece_params)
+      @piece.user = current_user
+      if @piece.save
+        flash[:notice] = "Piece added successfully"
+        redirect_to piece_path(@piece)
+      else
+        flash.now[:errors] = @piece.errors.full_messages.join(". ")
+        render :new
+      end
     end
   end
 
