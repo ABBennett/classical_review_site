@@ -1,11 +1,9 @@
 class PiecesController < ApplicationController
-  before_action :authorize_non_member, only: [:update, :edit, :destroy]
+  before_action :authenticate_user!, only: [:update, :edit, :destroy]
 
   def new
     @piece = Piece.new
-    if !user_signed_in?
-      flash.now[:notice] = "Please sign in to add a piece of music"
-    end
+    signed_in_flash
   end
 
   def index
@@ -34,12 +32,8 @@ class PiecesController < ApplicationController
     end
   end
 
-  def create
-    if !user_signed_in?
-      flash.now[:notice] = "Please sign in to add a piece of music"
+    def create
       @piece = Piece.new
-      render :new
-    else
       @piece = Piece.new(piece_params)
       @piece.user = current_user
       if @piece.save
@@ -50,7 +44,6 @@ class PiecesController < ApplicationController
         render :new
       end
     end
-  end
 
   def destroy
     Piece.find(params[:id]).destroy

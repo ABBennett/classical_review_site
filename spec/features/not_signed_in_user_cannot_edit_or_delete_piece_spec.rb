@@ -17,7 +17,8 @@ feature "non-signed-in user fails to edit or delete pieces" do
     scenario "non-signed-in is presented with error when visiting edit path" do
       visit edit_piece_path(piece)
 
-      expect(page.status_code).to eq(404)
+      expect(page).to have_content "You need to sign in or sign up before continuing."
+      expect(page).to_not have_content(piece.title)
     end
   end
 end

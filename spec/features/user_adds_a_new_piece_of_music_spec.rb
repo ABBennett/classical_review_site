@@ -2,14 +2,6 @@ require "rails_helper"
 
 feature "users can add a new piece of music" do
 
-  context "not logged in user" do
-    scenario "does not see link to add a new piece of music" do
-      visit root_path
-
-      expect(page).to_not have_content("Add New Piece")
-    end
-  end
-
   context "logged in user" do
     let(:user) { FactoryGirl.create(:user) }
     let!(:piece) { FactoryGirl.create(:piece, user: user) }

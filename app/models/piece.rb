@@ -6,5 +6,5 @@ class Piece < ActiveRecord::Base
   validates :title, presence: true, uniqueness:
   { scope: :composer, message: "There should only be one title and composer pair" }
   validates :composer, presence: true
-  validates :user_id, presence: true
+  validates :user_id, presence: { message: " must be signed in to create a new piece" }
 end

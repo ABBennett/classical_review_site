@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authorize_non_member, only: [:update, :edit, :destroy]
+  before_action :authenticate_user!, only: [:update, :edit, :destroy]
 
   def new
     @piece = Piece.find(params[:piece_id])
