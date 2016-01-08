@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!, only: [:update, :edit, :destroy]
+
   def new
     @piece = Piece.find(params[:piece_id])
     @review = Review.new

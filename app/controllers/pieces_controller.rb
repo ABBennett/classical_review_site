@@ -1,4 +1,6 @@
 class PiecesController < ApplicationController
+  before_action :authenticate_user!, only: [:update, :edit, :destroy]
+
   def new
     @piece = Piece.new
   end
@@ -29,17 +31,17 @@ class PiecesController < ApplicationController
     end
   end
 
-  def create
-    @piece = Piece.new(piece_params)
-    @piece.user = current_user
-    if @piece.save
-      flash[:notice] = "Piece added successfully"
-      redirect_to piece_path(@piece)
-    else
-      flash[:errors] = @piece.errors.full_messages.join(". ")
-      render :new
+    def create
+      @piece = Piece.new(piece_params)
+      @piece.user = current_user
+      if @piece.save
+        flash[:notice] = "Piece added successfully"
+        redirect_to piece_path(@piece)
+      else
+        flash.now[:errors] = @piece.errors.full_messages.join(". ")
+        render :new
+      end
     end
-  end
 
   def destroy
     Piece.find(params[:id]).destroy
