@@ -7,22 +7,15 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    if !user_signed_in?
-      flash.now[:notice] = "Please sign in to review a piece of music"
-      @piece = Piece.find(params[:piece_id])
-      @review = Review.new
-      render :'pieces/show'
+    @piece = Piece.find(params[:piece_id])
+    @review = @piece.reviews.new(review_params)
+    @review.user = current_user
+    if @review.save
+      flash[:notice] = 'Your review has been successfully added.'
+      redirect_to piece_path(@piece)
     else
-      @piece = Piece.find(params[:piece_id])
-      @review = @piece.reviews.new(review_params)
-      @review.user = current_user
-      if @review.save
-        flash[:notice] = 'Your review has been successfully added.'
-        redirect_to piece_path(@piece)
-      else
-        flash[:notice] = @review.errors.messages.values.join(". ")
-        render :'pieces/show'
-      end
+      flash[:notice] = @review.errors.messages.values.join(". ")
+      render :'pieces/show'
     end
   end
 
