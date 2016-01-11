@@ -21,7 +21,7 @@ class PiecesController < ApplicationController
 
   def edit
     @piece = Piece.find(params[:id])
-    if current_user != @piece.user && !current_user.admin
+    unless current_user.can_edit_piece?(@piece)
       flash[:notice] = "You can only edit a piece you created"
       redirect_to piece_path(@piece)
     end

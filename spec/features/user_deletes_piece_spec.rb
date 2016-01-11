@@ -21,11 +21,10 @@ feature "user deletes a piece" do
     end
   end
 
-
   context "non-signed-in user fails to delete a piece" do
-      before do
-        visit piece_path(piece)
-      end
+    before do
+      visit piece_path(piece)
+    end
 
     scenario "non-signed-in cannot see delete links" do
       expect(page).to_not have_content "Delete"

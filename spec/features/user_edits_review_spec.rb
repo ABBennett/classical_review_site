@@ -1,6 +1,6 @@
 feature "user edits a piece" do
   let(:user) { FactoryGirl.create(:user) }
-  let(:user1) { FactoryGirl.create(:user) }
+  let(:other_user) { FactoryGirl.create(:user) }
   let(:piece) { FactoryGirl.create(:piece, user: user) }
   let!(:review) { FactoryGirl.create(:review, piece: piece, user: user) }
 
@@ -32,8 +32,10 @@ feature "user edits a piece" do
 
       expect(page).to have_content "Edit Review"
 
+      character_minimum = 500
+
       title = "Really Good"
-      description = "MozartMozartMozartMozartMozartMozartMozartMozartMozartMozartMozartMozartMozartMozartMozartMozartMozart"
+      description = "a" * character_minimum
       fill_in 'Title', with: title
       fill_in 'Description', with: description
       click_button "Edit"
@@ -44,10 +46,10 @@ feature "user edits a piece" do
   end
 
   context "signed in user tries to edit someone elses review" do
-    let(:user2) { FactoryGirl.create(:user) }
+    let(:other_user) { FactoryGirl.create(:user) }
 
     before do
-      sign_in_as(user2)
+      sign_in_as(other_user)
     end
 
     scenario "signed in user cannot see edit button for other users review" do

@@ -1,6 +1,6 @@
 feature "user deletes a review" do
   let(:user) { FactoryGirl.create(:user) }
-  let(:user1) { FactoryGirl.create(:user) }
+  let(:other_user) { FactoryGirl.create(:user) }
   let(:piece) { FactoryGirl.create(:piece, user: user) }
   let!(:review) { FactoryGirl.create(:review, piece: piece, user: user) }
 
@@ -21,7 +21,7 @@ feature "user deletes a review" do
     end
 
     scenario "user cannot see delete button for review he did not create" do
-      sign_in_as(user1)
+      sign_in_as(other_user)
 
       visit piece_path(piece)
 

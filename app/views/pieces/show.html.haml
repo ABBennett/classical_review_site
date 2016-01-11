@@ -19,7 +19,7 @@
         %li= review.body
         %li= "written by: #{review.user.username}"
         - unless current_user.nil?
-          - if current_user == @piece.user || current_user.admin
+          - if current_user.can_edit_piece?(@piece)
             .links
               %p= link_to "Edit Review", edit_piece_review_path(@piece, review)
               %p= link_to "Delete Review", piece_review_path(@piece, review), method: :delete
