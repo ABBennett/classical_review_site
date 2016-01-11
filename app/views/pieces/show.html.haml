@@ -18,15 +18,16 @@
             %div.voting
               -# = link_to "+", votes_path(vote: {review_id: review.id, up: true}), method: :post
               -# = link_to "-", votes_path(vote: {review_id: review.id, up: false}), method: :post
+
               - if current_user.votes.where(review: review).first.nil?
-                = link_to "+", votes_path(vote: {review_id: review.id, up: true}), method: :post
-                = link_to "-", votes_path(vote: {review_id: review.id, up: false}), method: :post
+                %span#small= link_to "+", votes_path(vote: {review_id: review.id, up: true}), method: :post, remote: true
+                %span#small= link_to "-", votes_path(vote: {review_id: review.id, up: false}), method: :post, remote: true
               - elsif current_user.votes.where(review: review).first.up == true
-                %span= link_to "+", votes_path(vote: {review_id: review.id, up: true}), method: :post
-                = link_to "-", votes_path(vote: {review_id: review.id, up: false}), method: :post
+                %span#big +
+                %span#small= link_to "-", votes_path(vote: {review_id: review.id, up: false}), method: :post, remote: true
               - elsif
-                = link_to "+", votes_path(vote: {review_id: review.id, up: true}), method: :post
-                %span= link_to "-", votes_path(vote: {review_id: review.id, up: false}), method: :post
+                %span#small= link_to "+", votes_path(vote: {review_id: review.id, up: true}), method: :post, remote: true
+                %span#big -
 
             %h5.review-title= review.title
 
