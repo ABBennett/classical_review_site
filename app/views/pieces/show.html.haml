@@ -1,5 +1,5 @@
 .show-container
-  %h1.show-title= @piece.title
+  %h1.show-title#show-title1= @piece.title
   %h5.show-composer= @piece.composer
 
 %div.links
@@ -9,25 +9,25 @@
 %div= render 'reviews/form'
 
 - if !@reviews.nil?
-  %ul
+  %ul.clearfix
     - @reviews.each do |review|
       -if !review.title.empty?
 
         %div.review-container
-          %div.voting-title-container
+          %div.voting-title-container.clearfix
             %div.voting
               -# = link_to "+", votes_path(vote: {review_id: review.id, up: true}), method: :post
               -# = link_to "-", votes_path(vote: {review_id: review.id, up: false}), method: :post
 
               - if current_user.votes.where(review: review).first.nil?
-                %span#small= link_to "+", votes_path(vote: {review_id: review.id, up: true}), method: :post, remote: true
-                %span#small= link_to "-", votes_path(vote: {review_id: review.id, up: false}), method: :post, remote: true
+                %span{id: "#{review.id}"}= link_to "+", votes_path(vote: {review_id: review.id, up: true}), method: :post
+                %span{id: "#{review.id}"}= link_to "-", votes_path(vote: {review_id: review.id, up: false}), method: :post
               - elsif current_user.votes.where(review: review).first.up == true
-                %span#big +
-                %span#small= link_to "-", votes_path(vote: {review_id: review.id, up: false}), method: :post, remote: true
+                %span.voted +
+                %span{id: "#{review.id}"}= link_to "-", votes_path(vote: {review_id: review.id, up: false}), method: :post
               - elsif
-                %span#small= link_to "+", votes_path(vote: {review_id: review.id, up: true}), method: :post, remote: true
-                %span#big -
+                %span{id: "#{review.id}"}= link_to "+", votes_path(vote: {review_id: review.id, up: true}), method: :post
+                %span.voted -
 
             %h5.review-title= review.title
 
