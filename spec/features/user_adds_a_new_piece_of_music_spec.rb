@@ -1,6 +1,14 @@
 require "rails_helper"
 
-feature "users can add a new piece of music" do
+feature "user add a new piece of music" do
+
+  context "not-signed-in users" do
+    scenario "cannot create a new piece" do
+      visit new_piece_path
+
+      expect(page).to have_content "Please sign in to add a piece"
+    end
+  end
 
   context "logged in user" do
     let(:user) { FactoryGirl.create(:user) }

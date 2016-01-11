@@ -5,6 +5,13 @@ FactoryGirl.define do
     password '12345678'
   end
 
+  factory :admin, class: User do
+    username "admin"
+    email "admin@gmail.com"
+    password "password"
+    admin true
+  end
+
   factory :piece do
     sequence(:title) { |i| "Opus#{i}" }
     sequence(:composer) { |i| "Beethoven#{i}" }

@@ -1,0 +1,21 @@
+X signed in user can create new piece
+
+X Admin deletes piece
+X Admin edits piece
+X signed in user cannot delete any piece
+
+Admin deletes Review
+Admin edits Review
+
+X signed in user can edit title of piece that he created
+X signed in user cannot edit title of piece that he did not create
+
+
+X signed in user can edit review that he created
+X signed in user can't edit review that he did not create
+
+X signed in user can delete review that he created
+X signed in user can't delete review that he did not create
+
+signed in user can edit vote they created
+signed in user can't edit vote they did not create
