@@ -16,6 +16,6 @@ class User < ActiveRecord::Base
   private
 
   def owns?(resource)
-  self == resource.user
+    self == resource.user
   end
 end

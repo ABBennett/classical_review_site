@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:update, :edit, :destroy]
   before_action :piece, only: [:new, :create, :update, :destroy]
   before_action :only_edit_review_created, only: [:edit]
+  before_action :only_update_review_created, only: [:update]
 
   def new
     @review = Review.new
@@ -20,23 +21,9 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    review
-    piece
-    unless current_user.can_edit?(@review)
-      flash[:notice] = "You can only edit a review you created"
-      redirect_to piece_path(@piece)
-    end
   end
 
   def update
-    piece
-    if review.update_attributes(review_params)
-      flash[:notice] = "Review edited successfully"
-      redirect_to piece_path(@piece)
-    else
-      flash[:errors] = @review.errors.full_messages.join(". ")
-      render :edit
-    end
   end
 
   def destroy
@@ -55,6 +42,17 @@ class ReviewsController < ApplicationController
       flash[:notice] = "You can only edit a review you created"
       redirect_to piece_path(@piece)
       end
+  end
+
+  def only_update_review_created
+    piece
+    if review.update_attributes(review_params)
+      flash[:notice] = "Review edited successfully"
+      redirect_to piece_path(@piece)
+    else
+      flash[:errors] = @review.errors.full_messages.join(". ")
+      render :edit
+    end
   end
 
   def review_params
