@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
-gem 'foundation-rails'
+gem 'foundation-rails', '~> 5.0.3.1'
 gem 'simple_form'
 gem 'devise'
 gem 'haml'
@@ -54,6 +54,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'shoulda-matchers', require: false
   gem 'quiet_assets'
+  gem 'teaspoon-jasmine'
 end
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
 
