@@ -29,7 +29,6 @@ Piece.create(
   user_id: 2
 )
 
-
 Piece.create(
   title: "Violin Concerto No. 1 in D Major",
   composer: "Prokofiev",
@@ -47,7 +46,6 @@ Piece.create(
   composer: "Dvorak",
   user_id: 2
 )
-
 
 Piece.create(
   title: "Rite of Spring",
