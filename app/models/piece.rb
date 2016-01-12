@@ -15,4 +15,8 @@ class Piece < ActiveRecord::Base
   def self.composer_search(query)
     where("composer ilike ?", "%#{query}%")
   end
+
+  def editable_by?(user)
+    self.user == user
+  end
 end

@@ -1,13 +1,14 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:update, :edit, :destroy]
+  before_action :piece, only: [:new, :create, :update, :destroy]
+  before_action :only_edit_review_created, only: [:edit]
+  before_action :only_update_review_created, only: [:update]
 
   def new
-    @piece = Piece.find(params[:piece_id])
     @review = Review.new
   end
 
   def create
-    @piece = Piece.find(params[:piece_id])
     @review = @piece.reviews.new(review_params)
     @review.user = current_user
     if @review.save
@@ -25,9 +26,44 @@ class ReviewsController < ApplicationController
   def update
   end
 
+  def destroy
+    piece
+    review.destroy
+    flash[:success] = "Review Deleted"
+    redirect_to piece_path(piece)
+  end
+
   private
+
+  def only_edit_review_created
+    review
+    piece
+      unless current_user.can_edit?(@review)
+      flash[:notice] = "You can only edit a review you created"
+      redirect_to piece_path(@piece)
+      end
+  end
+
+  def only_update_review_created
+    piece
+    if review.update_attributes(review_params)
+      flash[:notice] = "Review edited successfully"
+      redirect_to piece_path(@piece)
+    else
+      flash[:errors] = @review.errors.full_messages.join(". ")
+      render :edit
+    end
+  end
 
   def review_params
     params.require(:review).permit(:title, :rating, :body)
+  end
+
+  def review
+    @review ||= Review.find(params[:id])
+  end
+
+  def piece
+    @piece ||= Piece.find(params[:piece_id])
   end
 end

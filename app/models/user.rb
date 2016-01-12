@@ -7,4 +7,15 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+
+  def can_edit?(resource)
+    admin || owns?(resource)
+  end
+
+  private
+
+  def owns?(resource)
+    self == resource.user
+  end
 end

@@ -1,12 +1,14 @@
 .show-container
   %h1.show-title= @piece.title
   %h5.show-composer= @piece.composer
+  %p= "Added by #{@piece.user.username}"
 
 - if user_signed_in?
-  - if current_user == @piece.user || current_user.role == "admin"
+  - if current_user.can_edit?(@piece)
     .links
-    %p= link_to "Edit Piece", edit_piece_path(@piece)
-    %p= link_to "Delete Piece", @piece, method: :delete
+      %p= link_to "Edit Piece", edit_piece_path(@piece)
+      - if current_user.admin
+        %p= link_to "Delete Piece", @piece, method: :delete
 
 %div= render 'reviews/form'
 
@@ -17,5 +19,10 @@
         %li= review.title
         %li= review.body
         %li= "written by: #{review.user.username}"
+        - unless current_user.nil?
+          - if current_user.can_edit?(review)
+            .links
+              %p= link_to "Edit Review", edit_piece_review_path(@piece, review)
+              %p= link_to "Delete Review", piece_review_path(@piece, review), method: :delete
 
   = paginate @reviews

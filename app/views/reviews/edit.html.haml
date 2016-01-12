@@ -1,0 +1,13 @@
+%h1 Edit Review
+= form_for [@piece, @review] do |f|
+  %div
+    = f.label :title
+    = f.text_field :title, placeholder: "Title"
+
+  %div
+    = f.label :description
+    = f.text_field :body, placeholder: "Description"
+
+  .actions
+    = f.submit "Edit"
+%div= link_to 'Back', piece_path(@piece)
