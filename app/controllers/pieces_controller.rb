@@ -1,12 +1,9 @@
 class PiecesController < ApplicationController
   before_action :authenticate_user!, only: [:update, :edit, :destroy]
+  before_action :signed_in_flash, only: [:new]
 
   def new
     @piece = Piece.new
-    if !user_signed_in?
-      flash[:notice] = "Please sign in to add a piece"
-      redirect_to pieces_path
-    end
   end
 
   def index
@@ -21,10 +18,7 @@ class PiecesController < ApplicationController
 
   def edit
     @piece = Piece.find(params[:id])
-    unless current_user.can_edit?(@piece)
-      flash[:notice] = "You can only edit a piece you created"
-      redirect_to piece_path(@piece)
-    end
+    edit_only_piece_created
   end
 
   def update
@@ -58,6 +52,20 @@ class PiecesController < ApplicationController
   end
 
   private
+
+  def signed_in_flash
+    if !user_signed_in?
+      flash[:notice] = "Please sign in to add a piece"
+      redirect_to pieces_path
+    end
+  end
+
+  def edit_only_piece_created
+    unless current_user.can_edit?(@piece)
+      flash[:notice] = "You can only edit a piece you created"
+      redirect_to piece_path(@piece)
+    end
+  end
 
   def piece_params
     params.require(:piece).permit(:title, :composer)

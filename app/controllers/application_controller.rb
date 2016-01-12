@@ -11,6 +11,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << [:username]
   end
 
+  def signed_in_flash
+    if !user_signed_in?
+      flash.now[:error] = "Please sign in first"
+    end
+  end
+
   def authorize_member
     if user_signed_in? && !current_user.admin?
       render file: 'public/404.html', status: :not_found, layout: false

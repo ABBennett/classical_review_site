@@ -1,13 +1,13 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:update, :edit, :destroy]
+  before_action :piece, only: [:new, :create, :update, :destroy]
+  before_action :only_edit_review_created, only: [:edit]
 
   def new
-    piece
     @review = Review.new
   end
 
   def create
-    piece
     @review = @piece.reviews.new(review_params)
     @review.user = current_user
     if @review.save
@@ -47,6 +47,15 @@ class ReviewsController < ApplicationController
   end
 
   private
+
+  def only_edit_review_created
+    review
+    piece
+      unless current_user.can_edit?(@review)
+      flash[:notice] = "You can only edit a review you created"
+      redirect_to piece_path(@piece)
+      end
+  end
 
   def review_params
     params.require(:review).permit(:title, :rating, :body)
