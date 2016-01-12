@@ -10,5 +10,7 @@
     = f.label :body
     = f.text_area :body, placeholder: "Review"
 
+  = f.input :user_id, type: "hidden", value: current_user.id
+
   .actions
     = f.submit "Add Review"

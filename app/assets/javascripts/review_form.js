@@ -5,7 +5,7 @@ var newReviewForm = function(formId) {
       return this.element.find("#review_title").val();
     },
     rating: function() {
-      return this.element.find("#review_rating").val();
+      return this.element.find("input[name='review[rating]']:checked").val();
     },
     body: function() {
       return this.element.find("#review_body").val();
@@ -18,18 +18,16 @@ var newReviewForm = function(formId) {
       if(matches.length === 2) {
         result = matches[1];
       }
+      return result;
+    },
     userId: function() {
-      var postPath = this.element.attr("action");
-      var regex = /\/pieces\/(\d+)\/reviews/;
-      var matches = postPath.match(regex);
-      var result;
-      return result
+      return this.element.find("#review_user_id").val();
     },
     attributes: function() {
       var result = {
         title: this.title(),
         body: this.body(),
-        piece_id: this.pieceId()
+        piece_id: this.pieceId(),
         rating: this.rating(),
         user_id: this.userId()
       }
