@@ -7,7 +7,13 @@ class PiecesController < ApplicationController
   end
 
   def index
-    @pieces = Piece.order(:created_at).page(params[:page]).per(10)
+    if params[:title_search]
+      @pieces = Piece.title_search(params[:title_search]).order(:created_at).page(params[:page]).per(10)
+    elsif params[:composer_search]
+      @pieces = Piece.composer_search(params[:composer_search]).order(:created_at).page(params[:page]).per(10)
+    else
+      @pieces = Piece.order(:created_at).page(params[:page]).per(10)
+    end
   end
 
   def show
