@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
   def edit
     review
     piece
-    unless current_user.can_edit_review?(@review)
+    unless current_user.can_edit?(@review)
       flash[:notice] = "You can only edit a review you created"
       redirect_to piece_path(@piece)
     end

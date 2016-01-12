@@ -8,11 +8,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  def can_edit_piece?(piece)
-    self.admin || self == piece.user
+
+  def can_edit?(resource)
+    admin || owns?(resource)
   end
 
-  def can_edit_review?(review)
-    self.admin || self == review.user
+  private
+
+  def owns?(resource)
+    resource ? (self == resource.user) : false
   end
 end

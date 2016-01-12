@@ -18,6 +18,11 @@ class Review < ActiveRecord::Base
     presence: { message: "You wrote a title, but forgot the review."}, if: :title_filled?
   validates :rank, presence: true, numericality: { only_integer: true }
 
+
+  def editable_by?(user)
+    self.user == user
+  end
+
   def body_filled?
     !body.empty?
   end

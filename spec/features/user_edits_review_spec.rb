@@ -22,26 +22,50 @@ feature "user edits a piece" do
   end
 
   context "signed in user editing own review" do
-    before do
-      sign_in_as(user)
-      visit piece_path(piece)
-      click_link "Edit Review"
+    context "on own piece" do
+      before do
+        sign_in_as(user)
+        visit piece_path(piece)
+        click_link "Edit Review"
+      end
+
+      scenario "signed in user sucessfully edits own review" do
+        expect(page).to have_content "Edit Review"
+
+        character_minimum = 500
+        title = "Really Good"
+        description = "a" * character_minimum
+        fill_in 'Title', with: title
+        fill_in 'Description', with: description
+        click_button "Edit"
+
+        expect(page).to have_content(title)
+        expect(page).to have_content(description)
+      end
     end
 
-    scenario "signed in user sucessfully edits own review" do
+    context "on another user's piece" do
+      let!(:other_review) { FactoryGirl.create(:review, piece: piece, user: other_user) }
 
-      expect(page).to have_content "Edit Review"
+      before do
+        sign_in_as(other_user)
+        visit piece_path(piece)
+        click_link "Edit Review"
+      end
 
-      character_minimum = 500
+      scenario "signed in user sucessfully edits own review on other user's piece" do
+        expect(page).to have_content "Edit Review"
 
-      title = "Really Good"
-      description = "a" * character_minimum
-      fill_in 'Title', with: title
-      fill_in 'Description', with: description
-      click_button "Edit"
+        character_minimum = 500
+        title = "Really Good"
+        description = "a" * character_minimum
+        fill_in 'Title', with: title
+        fill_in 'Description', with: description
+        click_button "Edit"
 
-      expect(page).to have_content(title)
-      expect(page).to have_content(description)
+        expect(page).to have_content(title)
+        expect(page).to have_content(description)
+      end
     end
   end
 
