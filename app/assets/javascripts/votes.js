@@ -3,11 +3,11 @@
 // $('#small').append("hi");
 
 $(document).ready(function() {
-  $(".small").on("click", function(event) {
+  $(".not_voted").on("click", function(event) {
     var userId = $('.username').attr('id')
     var reviewId = this.parentElement.id
     event.preventDefault();
-    // alert("hello");
+    alert("hello");
     var request = $.ajax({
         url: ("/votes"),
         type: "POST",
