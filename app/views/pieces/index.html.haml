@@ -1,11 +1,11 @@
 %p= link_to "Add New Piece", new_piece_path
-
-= form_tag(pieces_path, :method => "get", id: "search-form") do
-  = text_field_tag :title_search, params[:title_search], placeholder: "Search by Title"
-  = submit_tag "Title Search", :name => nil, label: "Title Search", id: "title_search_button"
-= form_tag(pieces_path, :method => "get", id: "search-form") do
-  = text_field_tag :composer_search, params[:composer_search], placeholder: "Search by Composer"
-  = submit_tag "Composer Search", :name => nil, label: "Composer Search", id: "composer_search_button"
+.seach.clearfix
+  = form_tag(pieces_path, :method => "get", id: "search-form") do
+    = text_field_tag :title_search, params[:title_search], placeholder: "Search by Title"
+    = submit_tag "Title Search", :name => nil, label: "Title Search", id: "title_search_button"
+  = form_tag(pieces_path, :method => "get", id: "search-form") do
+    = text_field_tag :composer_search, params[:composer_search], placeholder: "Search by Composer"
+    = submit_tag "Composer Search", :name => nil, label: "Composer Search", id: "composer_search_button"
 
 - if !@pieces.empty?
   %ul
@@ -14,6 +14,7 @@
         %p.piece-title= link_to piece.title, piece_path(piece)
         %p.piece-composer= piece.composer
 
+  %hr.line
   = paginate @pieces
 - else
   %h2 No results found
