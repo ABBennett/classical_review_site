@@ -21,22 +21,25 @@ $(document).ready(function() {
     });
 
     request.success(function(data) {
+      var append_to_element = "#review_id-" + data.review_id + " .voting";
+
+      $("#review_id-" + data.review_id + " span").remove();
+
+      if (data.up === 1) {
+        $(append_to_element).append(create_span(0, '+', 'voted' ));
+        $(append_to_element).append(create_span(-1, ' -', 'nil_vote'));
+      } else if (data.up === -1) {
+        $(append_to_element).append(create_span(1, '+', 'nil_vote'));
+        $(append_to_element).append(create_span(0, ' -', 'voted'));
+      } else {
+        $(append_to_element).append(create_span(1, '+', 'nil_vote'));
+        $(append_to_element).append(create_span(-1, ' -', 'nil_vote'));
+      };
+
       function create_span(up, plus_minus, class_name) {
         return '<span change_up_to="' + up + '" class="' + class_name +
         '"><a rel="nofollow" data-method="post" href="/votes?vote[review_id]=' +
         data.review_id + '&vote[up]=' + up + '">' + plus_minus + '</a></span>';
-      };
-
-      $("#review_id-" + reviewId + " span").remove();
-      if (data.up === 1) {
-        $("#review_id-" + data.review_id + " .voting").append(create_span(0, '+', 'voted' ));
-        $("#review_id-" + data.review_id + " .voting").append(create_span(-1, ' -', 'nil_vote'));
-      } else if (data.up === -1) {
-        $("#review_id-" + data.review_id + " .voting").append(create_span(1, '+', 'nil_vote'));
-        $("#review_id-" + data.review_id + " .voting").append(create_span(0, ' -', 'voted'));
-      } else {
-        $("#review_id-" + data.review_id + " .voting").append(create_span(1, '+', 'nil_vote'));
-        $("#review_id-" + data.review_id + " .voting").append(create_span(-1, ' -', 'nil_vote'));
       };
     });
     request.error(function(data) {
