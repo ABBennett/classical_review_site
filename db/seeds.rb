@@ -122,5 +122,5 @@ Piece.find_or_create_by!(
     rating: Faker::Number.between(1, 10),
     title: Faker::Hipster.sentence(3),
     body: Faker::Hipster.sentence(20)
- )
+  )
 end
