@@ -9,25 +9,25 @@
 %div= render 'reviews/form'
 
 - if !@reviews.nil?
-  %ul.clearfix
+  %ul.clearfix#review_block
     - @reviews.each do |review|
       -if !review.title.empty?
-
-        %div.review-container
+        %div.review-container{id: "review_id-#{review.id}", review_id: "#{review.id}"}
           %div.voting-title-container.clearfix
             %div.voting
               -# = link_to "+", votes_path(vote: {review_id: review.id, up: true}), method: :post
               -# = link_to "-", votes_path(vote: {review_id: review.id, up: false}), method: :post
-
-              - if current_user.votes.where(review: review).first.nil?
-                %span.not_voted{id: "#{review.id}"}= link_to "+", votes_path(vote: {review_id: review.id, up: true}), method: :post
-                %span.not_voted{id: "#{review.id}"}= link_to "-", votes_path(vote: {review_id: review.id, up: false}), method: :post
-              - elsif current_user.votes.where(review: review).first.up == true
-                %span.voted +
-                %span.not_voted{id: "#{review.id}"}= link_to "-", votes_path(vote: {review_id: review.id, up: false}), method: :post
-              - elsif
-                %span.not_voted{id: "#{review.id}"}= link_to "+", votes_path(vote: {review_id: review.id, up: true}), method: :post
-                %span.voted -
+              - if user_signed_in?
+                - current_vote = current_user.votes.where(review: review).first
+              - if current_vote.nil? || current_vote.up == 0
+                %span.nil_vote{change_up_to: "1"}= link_to "+", votes_path(vote: {review_id: review.id, up: 1}), method: :post
+                %span.nil_vote{change_up_to: "-1"}= link_to "-", votes_path(vote: {review_id: review.id, up: -1}), method: :post
+              - elsif current_vote.up == 1
+                %span.voted{change_up_to: "0"}= link_to "+", votes_path(vote: {review_id: review.id, up: 0}), method: :post
+                %span.nil_vote{change_up_to: "-1"}= link_to "-", votes_path(vote: {review_id: review.id, up: -1}), method: :post
+              - elsif current_vote.up == -1
+                %span.nil_vote{change_up_to: "1"}= link_to "+", votes_path(vote: {review_id: review.id, up: 1}), method: :post
+                %span.voted{change_up_to: "0"}= link_to "-", votes_path(vote: {review_id: review.id, up: 0}), method: :post
 
             %h5.review-title= review.title
 

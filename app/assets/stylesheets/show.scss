@@ -45,9 +45,11 @@
 //   font-size: 20px;
 // }
 
-.voted {
-  font-size: 50px;
+.voted a{
   color: red;
+  &:hover{
+  color: red;
+  }
 }
 
 span {
