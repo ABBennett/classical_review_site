@@ -5,7 +5,7 @@ feature "admin deletes review" do
     let(:admin) { FactoryGirl.create(:admin) }
     let(:review) { FactoryGirl.create(:review) }
     let!(:piece) { review.piece }
-    
+
     before do
       sign_in_as(admin)
       visit piece_path(piece)
