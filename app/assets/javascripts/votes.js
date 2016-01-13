@@ -42,6 +42,7 @@ $(document).ready(function() {
         data.review_id + '&vote[up]=' + up + '">' + plus_minus + '</a></span>';
       };
     });
+    
     request.error(function(data) {
       $(".flash").remove();
       error = data.responseText.replace(/error/, '').replace(/([{}":])/g, '');
