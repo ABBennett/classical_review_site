@@ -1,6 +1,6 @@
-%div.review-container
-  %div.voting-title-container
-    %div.voting
+.review-container
+  .voting-title-container
+    .voting
       = link_to "+", votes_path(:vote => {:review_id => review.id, :up => true}), :method => :post
       = link_to "-", votes_path(:vote => {:review_id => review.id, :up => false}), :method => :post
     %h5.review-title= review.title

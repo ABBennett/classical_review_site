@@ -44,7 +44,9 @@ feature "users can add a new review for a piece of music" do
 
       title = "a" * 101
       choose("9")
+      body = "a" * 50
       fill_in 'Title', with: title
+      fill_in 'Body', with: body
       click_button "Add Review"
 
       expect(page).to have_content "Titles need to be under 100 characters"
@@ -53,9 +55,11 @@ feature "users can add a new review for a piece of music" do
     scenario "user writes a body under 50 characters long" do
       visit piece_path(piece)
 
+      title = "a" * 4
       body = "a" * 49
       choose("9")
       fill_in 'Body', with: body
+      fill_in 'Title', with: title
       click_button "Add Review"
 
       expect(page).to have_content "Reviews need to be at least 50 characters"
@@ -64,9 +68,11 @@ feature "users can add a new review for a piece of music" do
     scenario "user writes a body over 5000 characters long" do
       visit piece_path(piece)
 
+      title = "a" * 4
       body = "a" * 5001
       choose("9")
       fill_in 'Body', with: body
+      fill_in 'Title', with: title
       click_button "Add Review"
 
       expect(page).to have_content "Reviews need to be under 5000 characters"

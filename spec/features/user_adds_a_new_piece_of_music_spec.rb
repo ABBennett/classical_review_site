@@ -1,12 +1,12 @@
 require "rails_helper"
 
-feature "users can add a new piece of music" do
+feature "user add a new piece of music" do
 
-  context "not logged in user" do
-    scenario "does not see link to add a new piece of music" do
-      visit root_path
+  context "not-signed-in users" do
+    scenario "cannot create a new piece" do
+      visit new_piece_path
 
-      expect(page).to_not have_content("Add New Piece")
+      expect(page).to have_content "Please sign in to add a piece"
     end
   end
 
