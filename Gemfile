@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
-gem 'foundation-rails', '~> 5.0.3.1'
+gem 'foundation-rails'
 gem 'simple_form'
 gem 'devise'
 gem 'haml'

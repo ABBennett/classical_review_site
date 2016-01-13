@@ -260,7 +260,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   factory_girl_rails
-  foundation-rails (~> 5.0.3.1)
+  foundation-rails
   haml
   jbuilder (~> 2.0)
   jquery-rails
