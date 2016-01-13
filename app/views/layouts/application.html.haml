@@ -13,7 +13,7 @@
     = csrf_meta_tag
 
     %body
-      %div.topbar= render 'layouts/topbar'
+      .topbar= render 'layouts/topbar'
       - flash.each do |type, message|
         .flash= message
       %nav
