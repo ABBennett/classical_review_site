@@ -18,7 +18,6 @@ class  VotesController < ApplicationController
         }
       else
         format.html { render action: "new" }
-        binding.pry
         format.json { render json: @vote.errors.full_messages, status: :unprocessable_entity }
       end
     end

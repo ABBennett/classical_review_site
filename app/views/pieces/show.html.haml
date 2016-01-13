@@ -32,8 +32,13 @@
                 %span.voted{ change_up_to: "0" }= link_to "-", votes_path(vote: { review_id: review.id, up: 0 }), method: :post
 
             %h5.review-title= review.title
+            %p= review.body
+            %p= "written by: #{review.user.username}"
+            - unless current_user.nil?
+              - if current_user.can_edit?(review)
+                .links
+                  %p= link_to "Edit Review", edit_piece_review_path(@piece, review)
+                  %p= link_to "Delete Review", piece_review_path(@piece, review), method: :delete
 
-          %p= review.body
-          %p= "written by: #{review.user.username}"
 
   = paginate @reviews
