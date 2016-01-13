@@ -2,11 +2,10 @@ require 'rails_helper'
 
 feature "admin deletes review" do
   context "visiting piece show page" do
-    let(:user) { FactoryGirl.create(:user) }
     let(:admin) { FactoryGirl.create(:admin) }
-    let(:piece) { FactoryGirl.create(:piece, user: user) }
-    let!(:review) { FactoryGirl.create(:review, piece: piece, user: user) }
-
+    let(:review) { FactoryGirl.create(:review) }
+    let!(:piece) { review.piece }
+    
     before do
       sign_in_as(admin)
       visit piece_path(piece)

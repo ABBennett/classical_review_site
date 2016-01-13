@@ -15,11 +15,14 @@ FactoryGirl.define do
   factory :piece do
     sequence(:title) { |i| "Opus#{i}" }
     sequence(:composer) { |i| "Beethoven#{i}" }
+    user
   end
 
   factory :review do
     sequence(:title) { |i| "It's Amazing#{i}" }
     sequence (:body) { |i| "#{i}" + "a" * 50 }
     rating "10"
+    user
+    piece
   end
 end
