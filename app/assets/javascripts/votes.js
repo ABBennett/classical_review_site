@@ -21,28 +21,22 @@ $(document).ready(function() {
     });
 
     request.success(function(data) {
+      function create_span(up, plus_minus, class_name) {
+        return '<span change_up_to="' + up + '" class="' + class_name +
+        '"><a rel="nofollow" data-method="post" href="/votes?vote[review_id]=' +
+        data.review_id + '&vote[up]=' + up + '">' + plus_minus + '</a></span>';
+      };
+
       $("#review_id-" + reviewId + " span").remove();
       if (data.up === 1) {
-        $("#review_id-" + data.review_id + " .voting").append(
-          '<span change_up_to="0" class="voted"><a rel="nofollow" data-method="post" href="/votes?vote[review_id]=' +
-          data.review_id + '&vote[up]=0">+</a></span>');
-        $("#review_id-" + data.review_id + " .voting").append(
-          '<span change_up_to="-1" class="nil_vote"><a rel="nofollow" data-method="post" href="/votes?vote[review_id]=' +
-          data.review_id + '&vote[up]=-1"> -</a>');
+        $("#review_id-" + data.review_id + " .voting").append(create_span(0, '+', 'voted' ));
+        $("#review_id-" + data.review_id + " .voting").append(create_span(-1, ' -', 'nil_vote'));
       } else if (data.up === -1) {
-        $("#review_id-" + data.review_id + " .voting").append(
-          '<span change_up_to="1" class="nil_vote"><a rel="nofollow" data-method="post" href="/votes?vote[review_id]=' +
-          data.review_id + '&vote[up]=1">+</a></span>');
-        $("#review_id-" + data.review_id + " .voting").append(
-          '<span change_up_to="0" class="voted"><a rel="nofollow" data-method="post" href="/votes?vote[review_id]=' +
-          data.review_id + '&vote[up]=0"> -</a></span>');
+        $("#review_id-" + data.review_id + " .voting").append(create_span(1, '+', 'nil_vote'));
+        $("#review_id-" + data.review_id + " .voting").append(create_span(0, ' -', 'voted'));
       } else {
-        $("#review_id-" + data.review_id + " .voting").append(
-          '<span change_up_to="1" class="nil_vote"><a rel="nofollow" data-method="post" href="/votes?vote[review_id]=' +
-          data.review_id + '&vote[up]=1">+</a></span>');
-        $("#review_id-" + data.review_id + " .voting").append(
-          '<span change_up_to="-1" class="nil_vote"><a rel="nofollow" data-method="post" href="/votes?vote[review_id]=' +
-          data.review_id + '&vote[up]=-1"> -</a></span>');
+        $("#review_id-" + data.review_id + " .voting").append(create_span(1, '+', 'nil_vote'));
+        $("#review_id-" + data.review_id + " .voting").append(create_span(-1, ' -', 'nil_vote'));
       };
     });
     request.error(function(data) {
