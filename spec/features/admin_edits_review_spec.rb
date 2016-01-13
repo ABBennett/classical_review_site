@@ -7,7 +7,6 @@ feature "admin edits review" do
     let(:piece) { FactoryGirl.create(:piece, user: user) }
     let!(:review) { FactoryGirl.create(:review, piece: piece, user: user) }
 
-
     before do
       sign_in_as(admin)
       visit piece_path(piece)
