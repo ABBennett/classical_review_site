@@ -12,11 +12,9 @@
   %ul.clearfix#review_block
     - @reviews.each do |review|
       -if !review.title.empty?
-        %div.review-container{id: "review_id-#{review.id}", review_id: "#{review.id}"}
+        %div.review-container{id: "review_id-#{review.id}"}
           %div.voting-title-container.clearfix
-            %div.voting
-              -# = link_to "+", votes_path(vote: {review_id: review.id, up: true}), method: :post
-              -# = link_to "-", votes_path(vote: {review_id: review.id, up: false}), method: :post
+            %div.voting{review_id: "#{review.id}"}
               - if user_signed_in?
                 - current_vote = current_user.votes.where(review: review).first
               - if current_vote.nil? || current_vote.up == 0

@@ -1,11 +1,20 @@
-require 'rails_helper'
+require "rails_helper"
 
-feature 'up and down vote' do
-  context 'visiting page as a user' do
-    let(:user) { FactoryGirl.create(:user) }
-    let(:piece) { FactoryGirl.create(:piece, user: user) }
-    let!(:review) { FactoryGirl.create(:review, user: user, piece: piece) }
+feature "users can add a new review for a piece of music" do
+  let(:user) { FactoryGirl.create(:user) }
+  let(:piece) { FactoryGirl.create(:piece, user: user) }
+  let!(:review) { FactoryGirl.create(:review, user: user, piece: piece) }
 
+  context "not logged in user" do
+    scenario "cannot vote" do
+      visit piece_path(piece)
+      click_link '+'
+
+      expect(page).to have_content "You need to sign in or sign up before continuing"
+    end
+  end
+
+  context "logged in user" do
     before do
       sign_in_as(user)
     end
@@ -14,16 +23,8 @@ feature 'up and down vote' do
       visit piece_path(piece)
       expect(page).to have_content("+")
       expect(page).to have_content("-")
-      expect(page).to_not have_css('span#big')
     end
 
-    scenario "user votes on a review" do
-      visit piece_path(piece)
-      click_link "+"
-
-      visit piece_path(piece)
-      expect(page).to have_css('span#big')
-      expect(page).to_not have_css
-    end
+    # other tests will be added when we add rank functionality
   end
 end
