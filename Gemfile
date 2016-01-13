@@ -54,6 +54,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'shoulda-matchers', require: false
   gem 'quiet_assets'
+  gem "mailcatcher"
 end
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
 
