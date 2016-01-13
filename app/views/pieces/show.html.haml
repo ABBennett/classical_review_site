@@ -29,7 +29,7 @@
                 %span.nil_vote{ change_up_to: "-1" }= link_to "-", votes_path(vote: { review_id: review.id, up: -1} ), method: :post
               - elsif current_vote.up == -1
                 %span.nil_vote{ change_up_to: "1" }= link_to "+", votes_path(vote: { review_id: review.id, up: 1 }), method: :post
-                %span.voted{ change_up_to: "0" = link_to "-", votes_path(vote: { review_id: review.id, up: 0 }), method: :post
+                %span.voted{ change_up_to: "0" }= link_to "-", votes_path(vote: { review_id: review.id, up: 0 }), method: :post
 
             %h5.review-title= review.title
 
