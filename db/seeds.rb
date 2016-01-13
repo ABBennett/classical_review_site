@@ -14,7 +14,7 @@ users.each do |user|
 end
 
 Piece.find_or_create_by!(
-  tiitle: "Symphony No. 5 in D Major",
+  title: "Symphony No. 5 in D Major",
   composer: "Shostakovich",
   user: User.all.sample
 )
