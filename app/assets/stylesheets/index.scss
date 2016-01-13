@@ -33,3 +33,24 @@
 a {
   padding: 0;
 }
+.pagination {
+  text-align: center;
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  font-size: 30px;
+}
+.line {
+  position: fixed;
+  bottom: 60px;
+  align: center;
+  width: 50%;
+  margin-left: 25%;
+}
+
+#search-form {
+  float: right;
+  display: inline;
+  padding-left: 5px;
+  padding-right: 5px;
+}
