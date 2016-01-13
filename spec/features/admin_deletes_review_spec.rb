@@ -12,10 +12,6 @@ feature "admin deletes review" do
       visit piece_path(piece)
     end
 
-    scenario "admin sees delete button for review" do
-      expect(page).to have_content "Delete Review"
-    end
-
     scenario "admin successfully deletes review" do
       click_link "Delete Review"
       expect(page).to_not have_content review.title
