@@ -24,25 +24,25 @@ $(document).ready(function() {
       $("#review_id-" + reviewId + " span").remove();
       if (data.up === 1) {
         $("#review_id-" + data.review_id + " .voting").append(
-          '<span change_up_to="0" class="voted"><a rel="nofollow" data-method="post" href="/votes?vote%5Breview_id%5D=' +
-          data.review_id + '&amp;vote%5Bup%5D=0">+</a></span>');
+          '<span change_up_to="0" class="voted"><a rel="nofollow" data-method="post" href="/votes?vote[review_id]=' +
+          data.review_id + '&vote[up]=0">+</a></span>');
         $("#review_id-" + data.review_id + " .voting").append(
-          '<span change_up_to="-1" class="nil_vote"><a rel="nofollow" data-method="post" href="/votes?vote%5Breview_id%5D=' +
-          data.review_id + '&amp;vote%5Bup%5D=-1"> -</a>');
+          '<span change_up_to="-1" class="nil_vote"><a rel="nofollow" data-method="post" href="/votes?vote[review_id]=' +
+          data.review_id + '&vote[up]=-1"> -</a>');
       } else if (data.up === -1) {
         $("#review_id-" + data.review_id + " .voting").append(
-          '<span change_up_to="1" class="nil_vote"><a rel="nofollow" data-method="post" href="/votes?vote%5Breview_id%5D=' +
-          data.review_id + '&amp;vote%5Bup%5D=1">+</a></span>');
+          '<span change_up_to="1" class="nil_vote"><a rel="nofollow" data-method="post" href="/votes?vote[review_id]=' +
+          data.review_id + '&vote[up]=1">+</a></span>');
         $("#review_id-" + data.review_id + " .voting").append(
-          '<span change_up_to="0" class="voted"><a rel="nofollow" data-method="post" href="/votes?vote%5Breview_id%5D=' +
-          data.review_id + '&amp;vote%5Bup%5D=0"> -</a></span>');
+          '<span change_up_to="0" class="voted"><a rel="nofollow" data-method="post" href="/votes?vote[review_id]=' +
+          data.review_id + '&vote[up]=0"> -</a></span>');
       } else {
         $("#review_id-" + data.review_id + " .voting").append(
-          '<span change_up_to="1" class="nil_vote"><a rel="nofollow" data-method="post" href="/votes?vote%5Breview_id%5D=' +
-          data.review_id + '&amp;vote%5Bup%5D=1">+</a></span>');
+          '<span change_up_to="1" class="nil_vote"><a rel="nofollow" data-method="post" href="/votes?vote[review_id]=' +
+          data.review_id + '&vote[up]=1">+</a></span>');
         $("#review_id-" + data.review_id + " .voting").append(
-          '<span change_up_to="-1" class="nil_vote"><a rel="nofollow" data-method="post" href="/votes?vote%5Breview_id%5D=' +
-          data.review_id + '&amp;vote%5Bup%5D=-1"> -</a></span>');
+          '<span change_up_to="-1" class="nil_vote"><a rel="nofollow" data-method="post" href="/votes?vote[review_id]=' +
+          data.review_id + '&vote[up]=-1"> -</a></span>');
       };
     });
     request.error(function(data) {
