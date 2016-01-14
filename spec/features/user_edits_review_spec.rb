@@ -1,8 +1,8 @@
 feature "user edits a piece" do
   let(:user) { FactoryGirl.create(:user) }
   let(:other_user) { FactoryGirl.create(:user) }
-  let(:piece) { FactoryGirl.create(:piece, user: user) }
-  let!(:review) { FactoryGirl.create(:review, piece: piece, user: user) }
+  let(:piece) { FactoryGirl.create(:piece) }
+  let!(:review) { FactoryGirl.create(:review, user: user, piece: piece) }
 
   context "non-signed-in user cannot edit a review" do
     before do
@@ -34,38 +34,40 @@ feature "user edits a piece" do
 
         character_minimum = 500
         title = "Really Good"
-        description = "a" * character_minimum
+        body = "a" * character_minimum
+        choose('5')
         fill_in 'Title', with: title
-        fill_in 'Description', with: description
+        fill_in 'Body', with: body
         click_button "Edit"
 
         expect(page).to have_content(title)
-        expect(page).to have_content(description)
+        expect(page).to have_content(body)
       end
     end
+  end
 
-    context "on another user's piece" do
-      let!(:other_review) { FactoryGirl.create(:review, piece: piece, user: other_user) }
+  context "on another user's piece" do
+    let!(:other_review) { FactoryGirl.create(:review, piece: piece, user: other_user) }
 
-      before do
-        sign_in_as(other_user)
-        visit piece_path(piece)
-        click_link "Edit Review"
-      end
+    before do
+      sign_in_as(other_user)
+      visit piece_path(piece)
+      click_link "Edit Review"
+    end
 
-      scenario "signed in user sucessfully edits own review on other user's piece" do
-        expect(page).to have_content "Edit Review"
+    scenario "signed in user sucessfully edits own review on other user's piece" do
+      expect(page).to have_content "Edit Review"
 
-        character_minimum = 500
-        title = "Really Good"
-        description = "a" * character_minimum
-        fill_in 'Title', with: title
-        fill_in 'Description', with: description
-        click_button "Edit"
+      character_minimum = 500
+      title = "Really Good"
+      body = "a" * character_minimum
+      choose('3')
+      fill_in 'Title', with: title
+      fill_in 'Body', with: body
+      click_button "Edit"
 
-        expect(page).to have_content(title)
-        expect(page).to have_content(description)
-      end
+      expect(page).to have_content(title)
+      expect(page).to have_content(body)
     end
   end
 
