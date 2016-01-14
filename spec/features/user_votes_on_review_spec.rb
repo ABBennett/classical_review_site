@@ -9,22 +9,15 @@ feature "users can add a new review for a piece of music" do
     scenario "cannot vote" do
       visit piece_path(piece)
       click_link '+'
+      expect(page).to have_content "You need to sign in or sign up before continuing"
 
+      visit piece_path(piece)
+      click_link '-'
       expect(page).to have_content "You need to sign in or sign up before continuing"
     end
   end
 
   context "logged in user" do
-    before do
-      sign_in_as(user)
-    end
-
-    scenario "user sees upvote and downvote" do
-      visit piece_path(piece)
-      expect(page).to have_content("+")
-      expect(page).to have_content("-")
-    end
-
     # other tests will be added when we add rank functionality
   end
 end
