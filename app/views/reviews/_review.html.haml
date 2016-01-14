@@ -4,9 +4,9 @@
   %ul
     - @reviews.each do |review|
       -if !review.title.empty?
-        .small-12.clearfix.review-container{id: "review_id-#{review.id}"}
+        .small-12.clearfix.review-container{ id: "review_id-#{review.id}" }
           .voting-title-container.small-2
-            .voting.small-2{review_id: "#{review.id}"}
+            .voting.small-2{ review_id: "#{review.id}" }
               - if user_signed_in?
                 - current_vote = current_user.votes.where(review: review).first
               - if current_vote.nil? || current_vote.up == 0
@@ -20,10 +20,10 @@
                 %span.voted{ change_up_to: "0" }= link_to "-", votes_path(vote: { review_id: review.id, up: 0 }), method: :post
 
           .review-title-container.small-8
-            %h3.review-rating.small-1= "Rating: #{review.rating}"
+            %h3.review-rating.small-1= "Rating: review.rating
             %h5.review-title.small-7= review.title
             %p.small-10= review.body
-            %p.small-12= "#{review.user.username}"
+            %p.small-12= review.user.username
             - unless current_user.nil?
               - if current_user.can_edit?(review)
                 .links

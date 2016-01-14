@@ -1,4 +1,4 @@
--if yield(:title) == "Edit"
+- if yield(:title) == "Edit"
   %h1 Edit Review
 
 = form_for [@piece, @review] do |f|
@@ -13,10 +13,10 @@
     = f.label :body
     = f.text_area :body, placeholder: "Review"
 
-  -if yield(:title) == "Show"
+  - if yield(:title) == "Show"
     .actions
       = f.submit "Add Review"
-  -else yield(:title) == "Edit"
+  - else yield(:title) == "Edit"
     .actions
       = f.submit "Edit"
       %div= link_to 'Back', piece_path(@piece)
