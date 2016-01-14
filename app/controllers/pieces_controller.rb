@@ -18,6 +18,7 @@ class PiecesController < ApplicationController
 
   def show
     @piece = Piece.find(params[:id])
+    @youtube_url = YouTubeAddy.youtube_embed_url(@piece.url, 560, 315)[38..-44]
     @review = Review.new
     @reviews = @piece.reviews.page(params[:page]).per(10)
   end
@@ -74,6 +75,6 @@ class PiecesController < ApplicationController
   end
 
   def piece_params
-    params.require(:piece).permit(:title, :composer)
+    params.require(:piece).permit(:title, :composer, :url)
   end
 end
