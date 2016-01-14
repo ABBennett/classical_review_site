@@ -11,17 +11,19 @@ X signed in user can edit review that he created
 X signed in user can't edit review that he did not create
 X signed in user can delete review that he created
 X signed in user can't delete review that he did not create
-X Admin deletes piece
-X Admin edits piece
 X currently user can only edit and delete reviews on pieces they created themselves
 X add user who created piece to piece show page
 X  put add new piece on the topbar
+X Admin deletes piece
+X Admin edits piece
+X Admin deletes Review
+X Admin edits Review
 
 
 Admin deletes a user
 Admin views a list of users
+
+
+
 signed in user can edit vote they created
 signed in user can't edit vote they did not create
-
-Admin deletes Review
-Admin edits Review

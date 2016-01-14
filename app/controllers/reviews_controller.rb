@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:update, :edit, :destroy]
-  before_action :piece, only: [:new, :create, :update, :destroy]
+  before_action :piece, only: [:new, :create, :edit, :update, :destroy]
   before_action :only_edit_review_created, only: [:edit]
   before_action :only_update_review_created, only: [:update]
 
@@ -28,7 +28,6 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    piece
     review.destroy
     flash[:success] = "Review Deleted"
     redirect_to piece_path(piece)
@@ -37,16 +36,13 @@ class ReviewsController < ApplicationController
   private
 
   def only_edit_review_created
-    review
-    piece
-      unless current_user.can_edit?(@review)
+    unless current_user.can_edit?(review)
       flash[:notice] = "You can only edit a review you created"
       redirect_to piece_path(@piece)
-      end
+    end
   end
 
   def only_update_review_created
-    piece
     if review.update_attributes(review_params)
       flash[:notice] = "Review edited successfully"
       redirect_to piece_path(@piece)
