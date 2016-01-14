@@ -27,7 +27,7 @@ feature "admin deletes users" do
     end
 
     scenario "user cannot see page" do
-      expect(page).to have_content "The page you were looking for doesn't exist."
+      expect(page).to_not have_content "Delete"
     end
   end
 end

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :reviews
   has_many :pieces
+   mount_uploader :profile_photo, ProfilePhotoUploader
 
   validates :username, presence: true
   # Include default devise modules. Others available are:
