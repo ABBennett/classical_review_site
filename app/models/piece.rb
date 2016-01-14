@@ -7,6 +7,7 @@ class Piece < ActiveRecord::Base
   { scope: :composer, message: "There should only be one title and composer pair" }
   validates :composer, presence: true
   validates :user_id, presence: { message: " must be signed in to create a new piece" }
+  validates :url, presence: true, format: { with: URI.regexp }
 
   def self.title_search(query)
     where("title ilike ?", "%#{query}%")

@@ -39,17 +39,17 @@ feature "users can add a new review for a piece of music" do
       expect(page).to have_content "Please choose a rating"
     end
 
-    scenario "user writes a title over 50 characters long" do
+    scenario "user writes a title over 400 characters long" do
       visit piece_path(piece)
 
-      title = "a" * 101
+      title = "a" * 401
       choose("9")
       body = "a" * 50
       fill_in 'Title', with: title
       fill_in 'Body', with: body
       click_button "Add Review"
 
-      expect(page).to have_content "Titles need to be under 100 characters"
+      expect(page).to have_content "Titles need to be under 400 characters"
     end
 
     scenario "user writes a body under 50 characters long" do
