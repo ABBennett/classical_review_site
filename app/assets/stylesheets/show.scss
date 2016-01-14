@@ -35,3 +35,33 @@
   width: 100%;
   height: 100%;
 }
+
+.voting-title-container {
+  padding-top: 20px;
+  vertical-align: middle;
+}
+
+.voting {
+  float: left;
+  padding-right: 5px;
+  font-size: 25px;
+}
+
+.review-container {
+  float: left;
+}
+
+.review-title {
+  margin-top: 5px;
+}
+
+.voted a{
+  color: red;
+  &:hover{
+  color: red;
+  }
+}
+
+span {
+  padding: 10px;
+}

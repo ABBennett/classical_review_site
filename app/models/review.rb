@@ -1,14 +1,15 @@
 class Review < ActiveRecord::Base
   belongs_to :piece
   belongs_to :user
+  has_many :votes
 
   validates :user_id, presence: { message: "Please sign in to add a review"}
   validates :rating, presence: { message: "Please choose a rating" }
   validates :title, length: {
     minimum: 1,
-    maximum: 100,
+    maximum: 400,
     too_short: "Titles need to be more than 1 character",
-    too_long: "Titles need to be under 100 characters" },
+    too_long: "Titles need to be under 400 characters" },
     presence: { message: "You wrote a review, but forgot the title."}, if: :body_filled?
   validates :body, length: {
     minimum: 50,
