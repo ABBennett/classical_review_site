@@ -1,19 +1,19 @@
-$green: #94B24D;
-$light_green: #D3FF82;
-$blue: #363D52;
-$dark_blue: #121D2B;
-$black: #111B1C;
-
- .title {
+.title {
   font-size: 20px;
   margin-bottom: 0;
 }
 
-.piece {
+.peace {
   padding-left: 10px;
   padding-top: 20px;
   padding-bottom: 0;
-  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: $light_blue;
+  &:hover{
+  background-color: $lighter_blue;
+  }
 }
 
 #home {
@@ -31,13 +31,16 @@ $black: #111B1C;
 
 .piece-composer {
   font-size: 16px;
+  font-weight: bold;
   line-height: 1;
   margin: 0;
   padding: 0;
+  color: $black;
 }
 
 a {
   padding: 0;
+  color: $green;
 }
 .pagination {
   text-align: center;

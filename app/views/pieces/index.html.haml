@@ -10,9 +10,10 @@
 - if !@pieces.empty?
   %ul
     - @pieces.each do |piece|
-      .piece
-        %p.piece-title= link_to piece.title, piece_path(piece)
-        %p.piece-composer= piece.composer
+      = link_to piece_path(piece) do
+        .peace
+          %p.piece-title= piece.title
+          %p.piece-composer= piece.composer
 
   %hr.line
   = paginate @pieces

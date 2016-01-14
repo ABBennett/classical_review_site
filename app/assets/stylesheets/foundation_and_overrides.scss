@@ -69,11 +69,6 @@
 // $base-line-height: 150%;
 
 // We use this to control whether or not CSS classes come through in the gem files.
-$green: #94B24D;
-$light_green: #D3FF82;
-$blue: #363D52;
-$dark_blue: #121D2B;
-$black: #111B1C;
 
 $include-html-classes: true;
 // $include-print-styles: true;
@@ -100,7 +95,7 @@ $font-family-sans-serif: "Nixie One", "Helvetica Neue", Helvetica, Roboto, Arial
 // We use these to define default font weights
 // $font-weight-normal: normal;
 // $font-weight-bold: bold;
-// $white       : #FFFFFF;
+$white       : #FFFFFF;
 // $ghost       : #FAFAFA;
 // $snow        : #F9F9F9;
 // $vapor       : #F6F6F6;
@@ -129,7 +124,7 @@ $font-family-sans-serif: "Nixie One", "Helvetica Neue", Helvetica, Roboto, Arial
 // $info-color: #a0d3e8;
 
 // We use these to control various global styles
-// $body-bg: $white;
+$body-bg: $blue;
 // $body-font-color: $jet;
 // $body-font-family: $font-family-sans-serif;
 // $body-font-weight: $font-weight-normal;
@@ -149,7 +144,7 @@ $font-family-sans-serif: "Nixie One", "Helvetica Neue", Helvetica, Roboto, Arial
 // $global-rounded: 1000px;
 
 // We use these to control inset shadow shiny edges and depressions.
-// $shiny-edge-size: 0 1px 0;
+$shiny-edge-size: 0 1px 0;
 // $shiny-edge-color: rgba($white, .5);
 // $shiny-edge-active-color: rgba($black, .2);
 
@@ -275,8 +270,8 @@ $font-family-sans-serif: "Nixie One", "Helvetica Neue", Helvetica, Roboto, Arial
 // We use these to style anchors
 // $anchor-text-decoration: none;
 // $anchor-text-decoration-hover: none;
-// $anchor-font-color: $primary-color;
-// $anchor-font-color-hover: scale-color($anchor-font-color, $lightness: -14%);
+$anchor-font-color: $green;
+$anchor-font-color-hover: scale-color($anchor-font-color, $lightness: +40%);
 
 // We use these to style the <hr> element
 // $hr-border-width: 1px;
@@ -1420,18 +1415,18 @@ $include-html-top-bar-classes: $include-html-classes;
 // $topbar-title-font-size: rem-calc(17);
 
 // Set the link colors and styles for top-level nav
-$topbar-link-color: $green;
-// $topbar-link-color-hover: $white;
+$topbar-link-color: $white;
+$topbar-link-color-hover: $white;
 // $topbar-link-color-active: $white;
-// $topbar-link-color-active-hover: $white;
+// $topbar-link-color-active-hover: $blue;
 // $topbar-link-weight: $font-weight-normal;
 // $topbar-link-font-size: rem-calc(13);
-// $topbar-link-hover-lightness: -10%; // Darken by 10%
-// $topbar-link-bg: $topbar-bg;
-// $topbar-link-bg-hover: $jet;
-// $topbar-link-bg-color-hover: $charcoal;
-// $topbar-link-bg-active: $primary-color;
-// $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
+// $topbar-link-hover-lightness: +50%; // Darken by 10%
+$topbar-link-bg: $black;
+$topbar-link-bg-hover: $green;
+$topbar-link-bg-color-hover: scale-color($black, $lightness: +20%);
+$topbar-link-bg-active: $green;
+$topbar-link-bg-active-hover: scale-color($green, $lightness: -20%);
 // $topbar-link-font-family: $body-font-family;
 // $topbar-link-text-transform: none;
 // $topbar-link-padding: ($topbar-height / 3);
@@ -1442,10 +1437,10 @@ $topbar-link-color: $green;
 
 // Style the top bar dropdown elements
 //$topbar-dropdown-bg: $oil;
-// $topbar-dropdown-link-color: $white;
-// $topbar-dropdown-link-color-hover: $topbar-link-color-hover;
-// $topbar-dropdown-link-bg: $oil;
-// $topbar-dropdown-link-bg-hover: $jet;
+$topbar-dropdown-link-color: $white;
+$topbar-dropdown-link-color-hover: $topbar-link-color-hover;
+$topbar-dropdown-link-bg: $black;
+$topbar-dropdown-link-bg-hover: $green;
 // $topbar-dropdown-link-weight: $font-weight-normal;
 // $topbar-dropdown-toggle-size: 5px;
 // $topbar-dropdown-toggle-color: $white;
