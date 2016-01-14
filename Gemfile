@@ -9,6 +9,7 @@ gem 'devise'
 gem 'haml'
 gem 'kaminari'
 gem 'faker'
+gem 'youtube_addy'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets

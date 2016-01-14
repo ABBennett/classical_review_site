@@ -1,5 +1,8 @@
 - provide(:title, 'Show')
 
+
+.embed-container
+  %iframe{width: "560", height: "315", src: "http://www.youtube.com/embed/#{@youtube_url}"}
 .show-container
   %h1.show-title#show-title1= @piece.title
   %h5.show-composer= @piece.composer
