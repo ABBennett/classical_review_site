@@ -69,6 +69,12 @@
 // $base-line-height: 150%;
 
 // We use this to control whether or not CSS classes come through in the gem files.
+$green: #94B24D;
+$light_green: #D3FF82;
+$blue: #363D52;
+$dark_blue: #121D2B;
+$black: #111B1C;
+
 $include-html-classes: true;
 // $include-print-styles: true;
 $include-html-global-classes: $include-html-classes;
@@ -94,7 +100,6 @@ $font-family-sans-serif: "Nixie One", "Helvetica Neue", Helvetica, Roboto, Arial
 // We use these to define default font weights
 // $font-weight-normal: normal;
 // $font-weight-bold: bold;
-
 // $white       : #FFFFFF;
 // $ghost       : #FAFAFA;
 // $snow        : #F9F9F9;
@@ -1400,10 +1405,10 @@ $font-family-sans-serif: "Nixie One", "Helvetica Neue", Helvetica, Roboto, Arial
 // 34. Top Bar
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// $include-html-top-bar-classes: $include-html-classes;
+$include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-// $topbar-bg-color: $oil;
+ $topbar-bg-color: $blue;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
