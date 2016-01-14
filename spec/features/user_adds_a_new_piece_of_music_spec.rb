@@ -26,7 +26,8 @@ feature "user add a new piece of music" do
       click_button "Add Piece"
 
       expect(page).to have_content "Piece added successfully"
-      expect(page).to have_css('iframe')
+      expect(page).to have_css('iframe[src="http://www.youtube.com/embed/0FF4HyB77hQ"]')
+
     end
 
     scenario "user does not provide proper information" do
