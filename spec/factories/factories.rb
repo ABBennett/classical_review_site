@@ -15,6 +15,7 @@ FactoryGirl.define do
   factory :piece do
     sequence(:title) { |i| "Opus#{i}" }
     sequence(:composer) { |i| "Beethoven#{i}" }
+    url "https://www.youtube.com/watch?v=CTE08SS8fNk"
     user
   end
 

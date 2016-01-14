@@ -7,9 +7,9 @@ class Review < ActiveRecord::Base
   validates :rating, presence: { message: "Please choose a rating" }
   validates :title, length: {
     minimum: 1,
-    maximum: 100,
+    maximum: 400,
     too_short: "Titles need to be more than 1 character",
-    too_long: "Titles need to be under 100 characters" },
+    too_long: "Titles need to be under 400 characters" },
     presence: { message: "You wrote a review, but forgot the title."}, if: :body_filled?
   validates :body, length: {
     minimum: 50,
