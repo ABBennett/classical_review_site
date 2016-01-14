@@ -1,6 +1,17 @@
 require 'coveralls'
 require 'database_cleaner'
 require 'rails_helper'
+require 'shoulda-matchers'
+
+require "bundler/setup"
+::Bundler.require(:default, :test)
+
+::Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
 
 Coveralls.wear!('rails')
 
