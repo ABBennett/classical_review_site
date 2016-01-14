@@ -9,6 +9,7 @@ gem 'devise'
 gem 'haml'
 gem 'kaminari'
 gem 'faker'
+gem 'carrierwave'
 gem 'youtube_addy'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
@@ -27,6 +28,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'fog'
 
 
 group :test do

@@ -1,0 +1,7 @@
+%h1= "#{@user.username}'s Info"
+
+%p= "Username: #{@user.username}"
+%p= "Email: #{@user.email}"
+%p
+  = "Profile Photo:"
+  = image_tag(@user.profile_photo, size: "50x30")
