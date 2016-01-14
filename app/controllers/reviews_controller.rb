@@ -17,6 +17,7 @@ class ReviewsController < ApplicationController
       redirect_to piece_path(@piece)
     else
       flash[:notice] = @review.errors.messages.values.join(". ")
+      @reviews = @piece.reviews.page(params[:page]).per(10)
       render :'pieces/show'
     end
   end
