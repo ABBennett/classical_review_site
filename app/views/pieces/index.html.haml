@@ -8,10 +8,9 @@
 
 .pieces
   - if !@pieces.empty?
-    %ul
-      - @pieces.each do |piece|
-        .piece
-          %p.piece-title= link_to piece.title, piece_path(piece)
-          %p.piece-composer= piece.composer
+    - @pieces.each do |piece|
+      .piece
+        %p.piece-title= link_to piece.title, piece_path(piece)
+        %p.piece-composer= piece.composer
   - else
     %h2 No results found

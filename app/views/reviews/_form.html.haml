@@ -16,7 +16,7 @@
   - if yield(:title) == "Show"
     .actions
       = f.submit "Add Review"
-  - else yield(:title) == "Edit"
+  - else
     .actions
       = f.submit "Edit"
       %div= link_to 'Back', piece_path(@piece)
