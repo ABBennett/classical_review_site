@@ -22,9 +22,11 @@ feature "user add a new piece of music" do
       visit new_piece_path
       fill_in 'Title', with: "Marriage of Figaro"
       fill_in 'Composer', with: "Mozart"
+      fill_in 'YouTube URL', with: "https://www.youtube.com/watch?v=0FF4HyB77hQ"
       click_button "Add Piece"
 
       expect(page).to have_content "Piece added successfully"
+      expect(page).to have_css('iframe')
     end
 
     scenario "user does not provide proper information" do

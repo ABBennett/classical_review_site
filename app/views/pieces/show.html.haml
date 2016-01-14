@@ -1,4 +1,5 @@
-%iframe{width: "560", height: "315", src: "#{@youtube_url}"}
+.embed-container
+  %iframe{width: "560", height: "315", src: "http://www.youtube.com/embed/#{@youtube_url}"}
 .show-container
   %h1.show-title= @piece.title
   %h5.show-composer= @piece.composer

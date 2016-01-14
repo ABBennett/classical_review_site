@@ -18,7 +18,7 @@ class PiecesController < ApplicationController
 
   def show
     @piece = Piece.find(params[:id])
-    @youtube_url = YouTubeAddy.youtube_embed_url(@piece.url, 560, 315)[38..-44]
+    @youtube_url = YouTubeAddy.extract_video_id(@piece.url)
     @review = Review.new
     @reviews = @piece.reviews.page(params[:page]).per(10)
   end
