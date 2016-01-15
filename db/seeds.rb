@@ -13,7 +13,7 @@ users.each do |user|
   user.save!(validate: false)
 end
 
-admin = User.find_or_create_by!(
+admin = User.new(
   email: 'bob@gmail.com',
   username: 'bob',
   encrypted_password: 'password',
