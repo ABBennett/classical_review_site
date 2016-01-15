@@ -17,13 +17,13 @@ feature "admin edits review" do
 
       character_minimum = 500
       title = "Really Good"
-      description = "a" * character_minimum
+      body = "a" * character_minimum
       fill_in 'Title', with: title
-      fill_in 'Description', with: description
+      fill_in 'Body', with: body
       click_button "Edit"
 
       expect(page).to have_content(title)
-      expect(page).to have_content(description)
+      expect(page).to have_content(body)
     end
   end
 end

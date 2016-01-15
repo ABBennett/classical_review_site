@@ -1,3 +1,6 @@
+- if yield(:title) == "Edit"
+  %h1 Edit Review
+
 = form_for [@piece, @review] do |f|
   .radio_buttons
     = f.collection_radio_buttons(:rating, [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10]], :first, :last)
@@ -10,5 +13,10 @@
     = f.label :body
     = f.text_area :body, placeholder: "Review"
 
-  .actions
-    = f.submit "Add Review"
+  - if yield(:title) == "Show"
+    .actions
+      = f.submit "Add Review"
+  - else
+    .actions
+      = f.submit "Edit"
+      %div= link_to 'Back', piece_path(@piece)

@@ -1,29 +1,25 @@
-%div= render 'reviews/form'
+- if review.title.present?
+  .small-12.clearfix.review-container{ id: "review_id-#{review.id}" }
+    .voting.small-2{ review_id: "#{review.id}" }
+      - if user_signed_in?
+        - current_vote = current_user.votes.where(review: review).first
+      - if current_vote.nil? || current_vote.up == 0
+        %span.nil_vote{ change_up_to: "1" }= link_to "+", votes_path(vote: { review_id: review.id, up: 1 }), method: :post
+        %span.nil_vote{ change_up_to: "-1" }= link_to "-", votes_path(vote: { review_id: review.id, up: -1 }), method: :post
+      - elsif current_vote.up == 1
+        %span.voted{ change_up_to: "0" }= link_to "+", votes_path(vote: { review_id: review.id, up: 0 }), method: :post
+        %span.nil_vote{ change_up_to: "-1" }= link_to "-", votes_path(vote: { review_id: review.id, up: -1} ), method: :post
+      - elsif current_vote.up == -1
+        %span.nil_vote{ change_up_to: "1" }= link_to "+", votes_path(vote: { review_id: review.id, up: 1 }), method: :post
+        %span.voted{ change_up_to: "0" }= link_to "-", votes_path(vote: { review_id: review.id, up: 0 }), method: :post
 
-- if !@reviews.empty?
-  %ul.clearfix#review_block
-    - @reviews.each do |review|
-      -if !review.title.empty?
-        .review-container{id: "review_id-#{review.id}"}
-          .voting-title-container.clearfix
-            .voting{review_id: "#{review.id}"}
-              - if user_signed_in?
-                - current_vote = current_user.votes.where(review: review).first
-              - if current_vote.nil? || current_vote.up == 0
-                %span.nil_vote{ change_up_to: "1" }= link_to "+", votes_path(vote: { review_id: review.id, up: 1 }), method: :post
-                %span.nil_vote{ change_up_to: "-1" }= link_to "-", votes_path(vote: { review_id: review.id, up: -1 }), method: :post
-              - elsif current_vote.up == 1
-                %span.voted{ change_up_to: "0" }= link_to "+", votes_path(vote: { review_id: review.id, up: 0 }), method: :post
-                %span.nil_vote{ change_up_to: "-1" }= link_to "-", votes_path(vote: { review_id: review.id, up: -1} ), method: :post
-              - elsif current_vote.up == -1
-                %span.nil_vote{ change_up_to: "1" }= link_to "+", votes_path(vote: { review_id: review.id, up: 1 }), method: :post
-                %span.voted{ change_up_to: "0" }= link_to "-", votes_path(vote: { review_id: review.id, up: 0 }), method: :post
-
-            %h5.review-title= review.title
-            %p= review.body
-            %p= "written by: #{review.user.username}"
-            - unless current_user.nil?
-              - if current_user.can_edit?(review)
-                .links
-                  %p= link_to "Edit Review", edit_piece_review_path(@piece, review)
-                  %p= link_to "Delete Review", piece_review_path(@piece, review), method: :delete
+    .review-title-container.small-8
+      %h3.review-rating.small-1= "Rating: #{review.rating}"
+      %h5.review-title.small-7= review.title
+      %p.small-10= review.body
+      %p.small-12= review.user.username
+      - unless current_user.nil?
+        - if current_user.can_edit?(review)
+          .links
+            %p= link_to "Edit Review", edit_piece_review_path(@piece, review)
+            %p= link_to "Delete Review", piece_review_path(@piece, review), method: :delete
