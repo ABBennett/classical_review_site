@@ -18,7 +18,13 @@ class Piece < ActiveRecord::Base
   # end
 
   include PgSearch
-  pg_search_scope :search_by_keywords, against: [:title, :composer]
+  pg_search_scope :search_by_keywords,
+    against: [:title, :composer],
+    using: {
+      tsearch: {
+        prefix: true
+      }
+    }
 
   def editable_by?(user)
     self.user == user

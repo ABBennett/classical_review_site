@@ -53,5 +53,15 @@ feature "visitor sees a list of pieces" do
       expect(page).to_not have_content pieces[0].title
       expect(page).to_not have_content pieces[1].title
     end
+
+    scenario "user submits a search with beginning of composer's name" do
+      fill_in "keyword_search", with: "Bern"
+      click_button "keyword_search_button"
+
+      expect(page).to have_content matching_piece.composer
+      expect(page).to have_content matching_piece.title
+      expect(page).to_not have_content pieces[0].title
+      expect(page).to_not have_content pieces[1].title
+    end
   end
 end

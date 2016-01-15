@@ -92,7 +92,7 @@ Piece.find_or_create_by!(
 )
 
 Piece.find_or_create_by!(
-  title: "String Quartet No.14 in G Major",
+  title: "String Quartet No. 14 in G Major",
   composer: "Mozart",
   user: User.all.sample,
   url: "https://www.youtube.com/watch?v=5BS_rG_XZ0Y"
@@ -239,35 +239,35 @@ Piece.find_or_create_by!(
 )
 
 Piece.find_or_create_by!(
-  title: "Symphony No.7 in A Major",
+  title: "Symphony No. 7 in A Major",
   composer: "Beethoven",
   user: User.all.sample,
   url: "https://www.youtube.com/watch?v=pKOpdt9PYXU"
 )
 
 Piece.find_or_create_by!(
-  title: "Cello Concerto No.1 in E Flat Major",
+  title: "Cello Concerto No. 1 in E Flat Major",
   composer: "Shostakovich",
   user: User.all.sample,
   url: "https://www.youtube.com/watch?v=tG0laIxC0Lo"
 )
 
 Piece.find_or_create_by!(
-  title: "Piano Concerto No.2 in F Major",
+  title: "Piano Concerto No. 2 in F Major",
   composer: "Shostakovich",
   user: User.all.sample,
   url: "https://www.youtube.com/watch?v=8trqW4_lwSk"
 )
 
 Piece.find_or_create_by!(
-  title: "Symphony No.5 in E Minor",
+  title: "Symphony No. 5 in E Minor",
   composer: "Tchaikovsky",
   user: User.all.sample,
   url: "https://www.youtube.com/watch?v=w2JBT0HC98I"
 )
 
 Piece.find_or_create_by!(
-  title: "Symphony No.6 in B Minor",
+  title: "Symphony No. 6 in B Minor",
   composer: "Tchaikovsky",
   user: User.all.sample,
   url: "https://www.youtube.com/watch?v=w2JBT0HC98I"
@@ -288,7 +288,7 @@ Piece.find_or_create_by!(
 )
 
 Piece.find_or_create_by!(
-  title: "String Quartet No.3 in F Major",
+  title: "String Quartet No. 3 in F Major",
   composer: "Shostakovich",
   user: User.all.sample,
   url: "https://www.youtube.com/watch?v=_besAgmU87s"
