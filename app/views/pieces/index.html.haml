@@ -10,11 +10,11 @@
   - if !@pieces.empty?
     - @pieces.each do |piece|
       = link_to piece_path(piece) do
-        .peace
+        .piece
           %p.piece-title= piece.title
           %p.piece-composer= piece.composer
 
-  %hr.line
-  = paginate @pieces
-- else
+    %hr.line
+    = paginate @pieces
+  - else
   %h2 No results found

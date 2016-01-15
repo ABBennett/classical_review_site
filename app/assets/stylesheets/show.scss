@@ -1,6 +1,8 @@
 .show-container {
   margin: 10px;
   padding: 5px;
+  background-color: $lighter_blue;
+  position: relative;
 }
 
 .show-title {
@@ -17,23 +19,25 @@
 }
 
 .embed-container {
-  position: relative;
+  // position: relative;
   padding-top: 10px;
   padding-bottom: 5px;
-  margin: auto;
-  height: 0;
+  padding-left: 10px;
+  // height: 10px;
   overflow: hidden;
-  width: 75%;
-  height: 55%;
+  // width: 75%;
+  // height: 100%;
+//   background-color: $green;
 }
 
 .embed-container iframe,
 .embed-container object,
 .embed-container embed {
   margin: auto;
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  // position: absolute;
+  // width: 75%;
+  // height: 100%;
+
 }
 
 .voting-title-container {
@@ -47,9 +51,9 @@
   font-size: 25px;
 }
 
-.review-container {
-  float: left;
-}
+// .review-container {
+//   float: left;
+// }
 
 .review-title {
   margin-top: 5px;

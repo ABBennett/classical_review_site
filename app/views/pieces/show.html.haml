@@ -14,7 +14,7 @@
       - if current_user.admin
         %p= link_to "Delete Piece", @piece, method: :delete
 
-= render 'reviews/form'
+.review= render 'reviews/form'
 
 - if !@reviews.nil?
   = render @reviews
