@@ -1,7 +1,7 @@
 - provide(:title, 'Show')
-
-.embed-container
-  %iframe{width: "560", height: "315", src: "http://www.youtube.com/embed/#{@youtube_url}"}
+.video-container
+  .embed-container
+    %iframe{width: "560", height: "315", src: "http://www.youtube.com/embed/#{@youtube_url}"}
 .show-container
   %h1.show-title#show-title1= @piece.title
   %h5.show-composer= @piece.composer
@@ -45,7 +45,8 @@
       - if current_user.admin
         %p= link_to "Delete Piece", @piece, method: :delete
 
-= render 'reviews/form'
+.review-form-div
+  = render 'reviews/form'
 
 - if !@reviews.nil?
   = render @reviews
