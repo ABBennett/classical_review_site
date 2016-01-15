@@ -5,9 +5,8 @@ feature 'user sees profile' do
   scenario 'user clicks name on topbar' do
     visit root_path
     sign_in_as(user)
-    save_and_open_page
     click_link "Signed in as #{user.username}"
     expect(page).to have_content(user.email)
 
-    end
+  end
 end
