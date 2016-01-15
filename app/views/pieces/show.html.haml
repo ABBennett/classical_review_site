@@ -5,6 +5,38 @@
 .show-container
   %h1.show-title#show-title1= @piece.title
   %h5.show-composer= @piece.composer
+  .average_rating_star_image
+    - whole = image_tag("star-on.png")
+    - half = image_tag("star-half.png")
+    - off = image_tag("star-off.png")
+    - if !@reviews.nil?
+      - if @piece_rating >= 9.5
+        = whole+whole+whole+whole+whole
+      - elsif @piece_rating >= 8.5
+        = whole+whole+whole+whole+half
+      - elsif @piece_rating >= 7.5
+        = whole+whole+whole+whole+off
+      - elsif @piece_rating >= 6.5
+        = whole+whole+whole+half+off
+      - elsif @piece_rating >= 5.5
+        = whole+whole+whole+off+off
+      - elsif @piece_rating >= 4.5
+        = whole+whole+half+off+off
+      - elsif @piece_rating >= 3.5
+        = whole+whole+off+off+off
+      - elsif @piece_rating >= 2.5
+        = whole+half+off+off+off
+      - elsif @piece_rating >= 1.5
+        = whole+off+off+off+off
+      - elsif @piece_rating > 0.0
+        = half+off+off+off+off
+      - elsif @piece_rating == 0.0
+        = off+off+off+off+off
+      - if @reviews.length == 1
+        = "#{@reviews.length} user review"
+      - else
+        = "#{@reviews.length} user reviews"
+
   %p= "Added by #{@piece.user.username}"
 
 - if user_signed_in?

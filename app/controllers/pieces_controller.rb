@@ -18,7 +18,8 @@ class PiecesController < ApplicationController
     @piece = Piece.find(params[:id])
     @youtube_url = YouTubeAddy.extract_video_id(@piece.url)
     @review = Review.new
-    @reviews = @piece.reviews.page(params[:page]).per(10)
+    @reviews = @piece.reviews
+    @piece_rating = @reviews.empty? ? 0 : calculate_piece_rating(@reviews)
   end
 
   def edit
@@ -57,6 +58,9 @@ class PiecesController < ApplicationController
   end
 
   private
+
+
+
 
   def signed_in_flash
     if !user_signed_in?
