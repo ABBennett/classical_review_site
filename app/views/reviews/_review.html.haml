@@ -14,7 +14,31 @@
         %span.voted{ change_up_to: "0" }= link_to "-", votes_path(vote: { review_id: review.id, up: 0 }), method: :post
 
     .review-title-container.small-8
-      %h3.review-rating.small-1= "Rating: #{review.rating}"
+      %h3.review-rating.small-2
+        - whole = image_tag("star-on.png")
+        - half = image_tag("star-half.png")
+        - off = image_tag("star-off.png")
+        - if review.rating > 9
+          = whole+whole+whole+whole+whole
+        - elsif review.rating > 8
+          = whole+whole+whole+whole+half
+        - elsif review.rating > 7
+          = whole+whole+whole+whole+off
+        - elsif review.rating > 6
+          = whole+whole+whole+half+off
+        - elsif review.rating > 5
+          = whole+whole+whole+off+off
+        - elsif review.rating > 4
+          = whole+whole+half+off+off
+        - elsif review.rating > 3
+          = whole+whole+off+off+off
+        - elsif review.rating > 2
+          = whole+half+off+off+off
+        - elsif review.rating > 1
+          = whole+off+off+off+off
+        - elsif review.rating > 0
+          = half+off+off+off+off
+
       %h5.review-title.small-7= review.title
       %p.small-10= review.body
       %p.small-12= review.user.username
