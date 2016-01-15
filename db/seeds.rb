@@ -13,6 +13,15 @@ users.each do |user|
   user.save!(validate: false)
 end
 
+admin = User.new(
+  email: 'bob@gmail.com',
+  username: 'bob',
+  encrypted_password: 'password',
+  admin: true
+)
+
+admin.save!(validate: false)
+
 Piece.find_or_create_by!(
   title: "Symphony No. 5 in D Major",
   composer: "Shostakovich",
