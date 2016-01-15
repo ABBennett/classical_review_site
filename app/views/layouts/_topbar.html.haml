@@ -12,6 +12,8 @@
   %section.top-bar-section
     / Right Nav Section
     %ul.right
+      %li= render 'layouts/search_button'
+      %li= render 'layouts/search'
       %li.active
         - if user_signed_in?
           %a{ href: "users/#{current_user.id}", id: "#{current_user.id}", class: "username" }= "Signed in as #{current_user.username}"

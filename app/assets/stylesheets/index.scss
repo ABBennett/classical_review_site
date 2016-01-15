@@ -11,7 +11,8 @@
   background-color: $light-blue;
   color: $green;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   margin-left: 20px;
   margin-right: 20px;
   padding-bottom: 0;
@@ -68,10 +69,37 @@ a {
   width: 50%;
 }
 
-.search-form {
-  display: inline;
-  float: right;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 5px;
+// #search-form {
+//   display: block;
+//   float: right;
+//   padding-left: 5px;
+//   padding-right: 5px;
+//   padding-top: 5px;
+// }
+
+.search_field {
+  background-color: $black;
+  display: block;
+}
+
+.search_button {
+  background-color: $black;
+
+  display: block;
+  margin-bottom: 0;
+  background-color: $black;
+}
+
+#keyword_search_button {
+  background-color: $green;
+  border-radius: 5px;
+  border: none;
+  color: $white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: none;
+}
+
+.button1 {
+  background-color: $green;
 }

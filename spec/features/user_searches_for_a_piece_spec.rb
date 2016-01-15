@@ -12,7 +12,7 @@ feature "visitor sees a list of pieces" do
 
     scenario "user successfully searches for a piece by title" do
       fill_in "keyword_search", with: pieces[0].title
-      click_button "keyword_search_button"
+      find("#keyword_search_button", visible: false).click
 
       # fill_in "title_search", with: pieces[0].title
       # click_button "title_search_button"
