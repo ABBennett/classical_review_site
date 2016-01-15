@@ -11,7 +11,8 @@
   background-color: $light-blue;
   color: $green;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   margin-left: 20px;
   margin-right: 20px;
   padding-bottom: 0;
@@ -97,4 +98,8 @@ a {
   padding-top: 10px;
   padding-bottom: 10px;
   display: none;
+}
+
+.button1 {
+  background-color: $green;
 }

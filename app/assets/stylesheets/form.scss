@@ -20,6 +20,11 @@
   padding: 5px;
 }
 
+form button {
+  background-color: $green;
+  color: $black;
+}
+
 .shared-links a {
   display: inline;
   margin-left: 10px;
