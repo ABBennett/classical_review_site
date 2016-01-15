@@ -62,6 +62,10 @@
   }
 }
 
-span {
+span.voted {
+  padding: 10px;
+}
+
+span.nil_vote {
   padding: 10px;
 }

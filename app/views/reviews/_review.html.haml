@@ -1,6 +1,6 @@
 %div= render 'reviews/form'
 
-- if !@reviews.nil?
+- if !@reviews.empty?
   %ul.clearfix#review_block
     - @reviews.each do |review|
       -if !review.title.empty?
@@ -27,6 +27,3 @@
                 .links
                   %p= link_to "Edit Review", edit_piece_review_path(@piece, review)
                   %p= link_to "Delete Review", piece_review_path(@piece, review), method: :delete
-
-
-  = paginate @reviews

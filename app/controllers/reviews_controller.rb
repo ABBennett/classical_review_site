@@ -17,6 +17,9 @@ class ReviewsController < ApplicationController
       redirect_to piece_path(@piece)
     else
       flash[:notice] = @review.errors.messages.values.join(". ")
+      @piece = Piece.find(@review.piece_id)
+      @reviews = @piece.reviews
+      @piece_rating = @reviews.empty? ? 0 : calculate_piece_rating(@reviews)
       render :'pieces/show'
     end
   end

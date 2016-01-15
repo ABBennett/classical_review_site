@@ -7,6 +7,14 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def calculate_piece_rating(reviews)
+    sum = 0.0
+    reviews.each do |review|
+      sum+=review.rating
+    end
+    sum/reviews.length
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << [:username, :profile_photo]
     devise_parameter_sanitizer.for(:account_update) << [:avatar]
