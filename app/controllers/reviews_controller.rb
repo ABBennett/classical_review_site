@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
     @review = @piece.reviews.new(review_params)
     @review.user = current_user
     if @review.save
-      ReviewMailer.new_review(@review).deliver_later
+      # ReviewMailer.new_review(@review).deliver_later
       flash[:notice] = 'Your review has been successfully added.'
       redirect_to piece_path(@piece)
     else
