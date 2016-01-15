@@ -1,16 +1,31 @@
- .title {
+@import "colors";
+@import "foundation_and_overrides";
+
+.title {
   font-size: 20px;
   margin-bottom: 0;
 }
 
 .piece {
-  padding-left: 10px;
-  padding-top: 20px;
+  border-radius: 5px;
+  background-color: $light-blue;
+  color: $green;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
   padding-bottom: 0;
-  margin-left: 10px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  &:hover {
+    background-color: $lighter-blue;
+    color: $white;
+  }
 }
 
-#home {
+.home {
   font-size: 40px;
   padding: 0;
 }
@@ -24,30 +39,39 @@
 
 
 .piece-composer {
+  color: $black;
   font-size: 16px;
+  font-weight: bold;
   line-height: 1;
   margin: 0;
   padding: 0;
 }
 
 a {
+  color: $green;
   padding: 0;
 }
+
 .pagination {
+  font-size: 30px;
   text-align: center;
   width: 100%;
-  font-size: 30px;
-}
-.line {
-  align: center;
-  width: 50%;
-  margin-left: 25%;
 }
 
-#search-form {
-  float: right;
+.line {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid $black;
+  margin-top: 3em;
+  margin-left: 25%;
+  width: 50%;
+}
+
+.search-form {
   display: inline;
-  padding-top: 5px;
+  float: right;
   padding-left: 5px;
   padding-right: 5px;
+  padding-top: 5px;
 }

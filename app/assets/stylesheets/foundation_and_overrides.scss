@@ -1416,17 +1416,17 @@ $topbar-height: rem-calc(60);
 
 // Set the link colors and styles for top-level nav
 $topbar-link-color: $white;
-$topbar-link-color-hover: $white;
+$topbar-link-color-hover: $green;
 // $topbar-link-color-active: $white;
 // $topbar-link-color-active-hover: $blue;
 // $topbar-link-weight: $font-weight-normal;
-// $topbar-link-font-size: rem-calc(13);
+$topbar-link-font-size: rem-calc(13);
 // $topbar-link-hover-lightness: +50%; // Darken by 10%
 $topbar-link-bg: $black;
-$topbar-link-bg-hover: $green;
+$topbar-link-bg-hover: $lighter-black;
 $topbar-link-bg-color-hover: scale-color($black, $lightness: +20%);
-$topbar-link-bg-active: $green;
-$topbar-link-bg-active-hover: scale-color($green, $lightness: -20%);
+$topbar-link-bg-active: $lighter-black;
+$topbar-link-bg-active-hover: $green;
 // $topbar-link-font-family: $body-font-family;
 // $topbar-link-text-transform: none;
 // $topbar-link-padding: ($topbar-height / 3);
@@ -1438,9 +1438,9 @@ $topbar-link-bg-active-hover: scale-color($green, $lightness: -20%);
 // Style the top bar dropdown elements
 //$topbar-dropdown-bg: $oil;
 $topbar-dropdown-link-color: $white;
-$topbar-dropdown-link-color-hover: $topbar-link-color-hover;
+$topbar-dropdown-link-color-hover: $green;
 $topbar-dropdown-link-bg: $black;
-$topbar-dropdown-link-bg-hover: $green;
+$topbar-dropdown-link-bg-hover: $lighter-black;
 // $topbar-dropdown-link-weight: $font-weight-normal;
 // $topbar-dropdown-toggle-size: 5px;
 // $topbar-dropdown-toggle-color: $white;

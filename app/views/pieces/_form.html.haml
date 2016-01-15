@@ -1,15 +1,15 @@
 = form_for(@piece) do |f|
-  %div
+  %div.review-form-title
     = f.label :url
     = f.text_field :url, placeholder: "YouTube URL"
 
-  %div
+  %div.review-form-title
     = f.label :title
     = f.text_field :title, placeholder: "Title"
 
-  %div
+  %div.review-form-title
     = f.label :composer
     = f.text_field :composer, placeholder: "Composer"
 
-  .actions
+  .form-actions
     = f.submit "Add Piece"
